@@ -1,2 +1,8 @@
 eclipse.preferences.version=1
-encoding//scripts/main.py=utf-8
+encoding//Old\ Scripts/main.py=utf-8
+encoding//scripts/Main_test.py=utf-8
+encoding//scripts/command_line.py=utf-8
+encoding//scripts/create_dirctory.py=utf-8
+encoding//scripts/device_info.py=utf-8
+encoding//scripts/monkey_test.py=utf-8
+encoding//scripts/save_files.py=utf-8

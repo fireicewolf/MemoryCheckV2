@@ -60,9 +60,6 @@ def createResultDir(createtime):
         os.makedirs(resultFolder)
     return resultFolder+os.path.sep
 
-createtime=time.strftime('%Y-%m-%d_%H-%M-%S',time.localtime())
-resultDir=createResultDir(createtime)
-
 #Definition for adb logs directory
 def createadbLogsDir(deviceid):
     logpath=resultDir
@@ -226,6 +223,9 @@ def monkeytest(deviceid,runtime,gettime):
     
     print(time.ctime()+"~~ Device "+deviceid+':Test finished.')
 
+
+createtime=time.strftime('%Y-%m-%d_%H-%M-%S',time.localtime())
+resultDir=createResultDir(createtime)
 
 threads = []
  
