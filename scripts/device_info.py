@@ -1,5 +1,6 @@
 #coding=utf-8
 
+import time
 import re
 from scripts.command_line import commandLine
 
@@ -38,7 +39,7 @@ def manufacturer(deviceid):
     
 #Definition for model name
 def model(deviceid):
-    model_cmd='adb -s '+deviceid+' shell getprop ro.product.manufacturer'
+    model_cmd='adb -s '+deviceid+' shell getprop ro.product.model'
     model=commandLine(model_cmd).stdout.read()
     model=model.decode()
     model=model.strip()

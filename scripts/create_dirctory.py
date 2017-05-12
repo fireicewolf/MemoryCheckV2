@@ -2,6 +2,7 @@
 import os
 from scripts.device_info import manufacturer
 from scripts.device_info import model
+from scripts.device_info import buildVersion
 
 #Definition for result directory 
 def createResultDir(createtime):
@@ -16,7 +17,7 @@ def createResultDir(createtime):
     return resultFolder+os.path.sep
 
 def deviceDirName(deviceid):
-    deviceDirName=manufacturer(deviceid)+'_'+model(deviceid)+'_'+deviceid
+    deviceDirName=manufacturer(deviceid)+'__'+model(deviceid)+'__'+deviceid+'__'+buildVersion(deviceid)
     return deviceDirName
 
 #Definition for adb logs directory

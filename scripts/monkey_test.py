@@ -65,11 +65,12 @@ def monkeytest(createtime,deviceid,runtime,gettime):
     adbWaitForDevice_cmd='adb -s '+deviceid+' wait-for-device'
     commandLine(adbWaitForDevice_cmd).wait()
     print(time.ctime()+"~~ Device "+deviceid+':Wait 30s for device stable.')
-    time.sleep(30)
+    time.sleep(60)
     
     count=int(runtime*60*60*1000/500)
+    
     if adbstate(deviceid)=="device":
-        print(time.ctime()+"~~ Device "+deviceid+':Adb connection successful, wait 5 minutes before test')
+        print(time.ctime()+"~~ Device "+deviceid+':Adb connection successful, wait for 5 minutes before test')
         time.sleep(300)
         
         print(time.ctime()+"~~ Device "+deviceid+':Catching memory info before test.')
@@ -133,6 +134,6 @@ def monkeytest(createtime,deviceid,runtime,gettime):
         
     else:
         print(time.ctime()+"~~ Device "+deviceid+':Adb connection failed, please check and fix this.')
-        os.system("pause")
+#         os.system("pause")
     
     print(time.ctime()+"~~ Device "+deviceid+':Test finished.')
