@@ -175,6 +175,3 @@ def resultMaker(savepath):
                 
     workbook.close()
     print(time.ctime()+"~~ Test result saved.")
-
-# savepath="..\\Result\\2017-05-11_11-36-08\\"
-# resultMaker(savepath)

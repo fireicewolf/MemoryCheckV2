@@ -6,7 +6,7 @@ from scripts.device_info import buildVersion
 
 #Definition for result directory 
 def createResultDir(createtime):
-    resultpath=("..\\Result")
+    resultpath=(".\\Result")
     resultpathisExists=os.path.exists(resultpath)
     if not resultpathisExists:
         os.makedirs(resultpath)
