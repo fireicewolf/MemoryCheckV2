@@ -5,40 +5,48 @@ import time
 import xlsxwriter
 
 
-def resultMaker(savepath):
-    dumpsyslogs=savepath+'dumpsys_logs'
-    
-    resultName=savepath+"Test Result.xlsx"
-    workbook = xlsxwriter.Workbook(resultName)
-    for dirpath,dirnames,filenames in os.walk(dumpsyslogs):
-        for dirname in dirnames:
-            getname=dirname.split("__")
+def resultMaker(save_path):
+    dumpsyslogs = save_path + 'dumpsys_logs'
+    resultName = save_path + "Test Result.xlsx"
 
-            manufacturer=getname[0]
-            model=getname[1]
-            deviceid=getname[2]
-            buildVersion=getname[3]
+    workbook = xlsxwriter.Workbook(resultName)
+    for dirpath, dirnames, filenames in os.walk(dumpsyslogs):
+        for dirname in dirnames:
+            getname = dirname.split("__")
+
+            manufacturer = getname[0]
+            model = getname[1]
+            deviceid = getname[2]
+            buildVersion = getname[3]
             
-            worksheet=workbook.add_worksheet(model+' '+deviceid)
+            worksheet = workbook.add_worksheet(model+' '+deviceid)
             
-            titleFormat=workbook.add_format({'font_name': 'Arial', 'font_size': 18, 'bold': True, 'bg_color': '#00B0F0',
-                                             'align': 'center', 'valign': 'vcenter', 'border': 1})
-            greenTitleFormat=workbook.add_format({'font_name': 'Arial', 'font_size': 11, 'align': 'center',
-                                                  'valign': 'vcenter', 'border': 1, 'bg_color': '#92D050'})
-            greenTitleNumFormat=workbook.add_format({'font_name': 'Arial', 'font_size': 11, 'align': 'center',
-                                                     'valign': 'vcenter', 'border': 1, 'bg_color': '#92D050',
-                                                     'num_format': '0.00'})
-            yellowTitleFormat=workbook.add_format({'font_name': 'Arial', 'font_size': 11, 'align': 'center',
-                                                   'valign': 'vcenter', 'border': 1, 'bg_color': '#FFC000',
-                                                   'bold': True})
-            greyTitleFormat=workbook.add_format({'font_name': 'Arial', 'font_size': 11, 'align': 'center',
-                                                 'valign':'vcenter', 'border': 1, 'bg_color': '#A6A6A6'})
-            defaultCellFormat=workbook.add_format({'font_name': 'Arial', 'font_size': 11, 'align': 'center',
-                                                   'valign': 'vcenter', 'border': 1})
-            numCellFormat=workbook.add_format({'font_name': 'Arial', 'font_size': 11, 'align': 'center',
-                                               'valign':'vcenter', 'border': 1, 'num_format': '0.00'})
-            processNameCellFormat=workbook.add_format({'font_name': 'Arial', 'font_size': 11, 'valign': 'vcenter',
-                                                       'border':1})
+            titleFormat = workbook.add_format({'font_name': 'Arial', 'font_size': 18, 'bold': True,
+                                               'bg_color': '#00B0F0', 'align': 'center', 'valign': 'vcenter',
+                                               'border': 1})
+
+            greenTitleFormat = workbook.add_format({'font_name': 'Arial', 'font_size': 11, 'align': 'center',
+                                                    'valign': 'vcenter', 'border': 1, 'bg_color': '#92D050'})
+
+            greenTitleNumFormat = workbook.add_format({'font_name': 'Arial', 'font_size': 11, 'align': 'center',
+                                                       'valign': 'vcenter', 'border': 1, 'bg_color': '#92D050',
+                                                       'num_format': '0.00'})
+
+            yellowTitleFormat = workbook.add_format({'font_name': 'Arial', 'font_size': 11, 'align': 'center',
+                                                     'valign': 'vcenter', 'border': 1, 'bg_color': '#FFC000',
+                                                     'bold': True})
+
+            greyTitleFormat = workbook.add_format({'font_name': 'Arial', 'font_size': 11, 'align': 'center',
+                                                   'valign':'vcenter', 'border': 1, 'bg_color': '#A6A6A6'})
+
+            defaultCellFormat = workbook.add_format({'font_name': 'Arial', 'font_size': 11, 'align': 'center',
+                                                     'valign': 'vcenter', 'border': 1})
+
+            numCellFormat = workbook.add_format({'font_name': 'Arial', 'font_size': 11, 'align': 'center',
+                                                 'valign':'vcenter', 'border': 1, 'num_format': '0.00'})
+
+            processNameCellFormat = workbook.add_format({'font_name': 'Arial', 'font_size': 11, 'valign': 'vcenter',
+                                                         'border':1})
             
             worksheet.merge_range('A1:J1', 'Memory Usage Test', titleFormat)
             worksheet.merge_range('A2:C2', 'Manufacturer', greenTitleFormat)
