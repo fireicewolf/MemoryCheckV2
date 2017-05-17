@@ -34,7 +34,7 @@ for line in deviceList():
             testpackagenames += '-p '+line+' '
         print(time.ctime()+"~~ Device "+deviceid+':Packages '+str(testpackages)+' will be tested.')
   
-    t1 = threading.Thread(target=monkeytest, args=(createtime,deviceid,testpackagenames,runtime,gettime,))
+    t1 = threading.Thread(target=monkeytest, args=(createtime, deviceid, testpackagenames, runtime, gettime,))
     threads.append(t1)
  
 resultThread=threading.Thread(target=resultMaker, args=(createResultDir(createtime),))

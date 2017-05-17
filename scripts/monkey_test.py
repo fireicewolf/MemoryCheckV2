@@ -14,125 +14,135 @@ from .save_files import saveMemInfo
 from .save_files import saveMemInfoAfterClearProcess
 
 
-def getAppPackageName(createtime,deviceid):
-    installViewApk_cmd='adb -s '+deviceid+' install -r -g package_name_viewer.apk'
+def getAppPackageName(create_time,device_id):
+    installViewApk_cmd = 'adb -s '+device_id+' install -r -g package_name_viewer.apk'
     commandLine(installViewApk_cmd).wait(10)
     
-    launchViewApk_cmd='adb -s '+deviceid+' shell am start -n com.gionee.packages/com.gionee.packages.MainActivity'
+    launchViewApk_cmd = 'adb -s '+device_id+' shell am start -n com.gionee.packages/com.gionee.packages.MainActivity'
     commandLine(launchViewApk_cmd).wait(10)
 
-    saveListToPC_cmd='adb -s '+deviceid+' pull /sdcard/packages_visual.txt '+createpackageListDir(createtime,deviceid)+'packages_names_list.txt'
+    saveListToPC_cmd = 'adb -s '+device_id+' pull /sdcard/packages_visual.txt ' + \
+                       createpackageListDir(create_time, device_id)+'packages_names_list.txt'
     commandLine(saveListToPC_cmd).wait(10)
     
-    uninstallViewApk_cmd='adb -s '+deviceid+' uninstall com.gionee.packages'
+    uninstallViewApk_cmd = 'adb -s '+device_id+' uninstall com.gionee.packages'
     commandLine(uninstallViewApk_cmd).wait(10)
     
-    removeListInPhone_cmd='adb -s '+deviceid+' shell rm /sdcard/packages_visual.txt'
+    removeListInPhone_cmd = 'adb -s '+device_id+' shell rm /sdcard/packages_visual.txt'
     commandLine(removeListInPhone_cmd).wait(10)
 
-    print(time.ctime()+"~~ Device "+deviceid+":Get app's package names success.")
+    print(time.ctime()+"~~ Device "+device_id+":Get app's package names success.")
     
-    openapplists=open(createpackageListDir(createtime,deviceid)+'packages_names_list.txt','r')
-    applists=openapplists.readlines()
+    openapplists = open(createpackageListDir(create_time, device_id)+'packages_names_list.txt', 'r')
+    applists = openapplists.readlines()
     openapplists.close()
     
-    print(time.ctime()+"~~ Device "+deviceid+':App lists load successfully, total '+str(len(applists))+' apps.')
+    print(time.ctime()+"~~ Device "+device_id+':App lists load successfully, total '+str(len(applists))+' apps.')
     
-    testpackages=''
+    test_packages = ''
     
     for line in applists:
-        line=line.strip('\n')
-        testpackages +='-p '+line+' '
-    return testpackages
+        line = line.strip('\n')
+        test_packages += '-p '+line+' '
+    return test_packages
 
 
-def killMonkeyTestProcess(deviceid):
-    viewMonkeyTestProcess_cmd='adb -s '+deviceid+' shell "ps | grep monkey"'
-    MonkeyTestProcess=commandLine(viewMonkeyTestProcess_cmd).stdout.read()
-    MonkeyTestProcess=MonkeyTestProcess.decode()
-    MonkeyTestProcess=MonkeyTestProcess.split(' ')[5]
+def killMonkeyTestProcess(device_id):
+    viewMonkeyTestProcess_cmd = 'adb -s '+device_id+' shell "ps | grep monkey"'
+    MonkeyTestProcess = commandLine(viewMonkeyTestProcess_cmd).stdout.read()
+    MonkeyTestProcess = MonkeyTestProcess.decode()
+    MonkeyTestProcess = MonkeyTestProcess.split(' ')[5]
     
-    killMonkeyTestProcess_cmd='adb -s '+deviceid+' shell kill '+str(MonkeyTestProcess)
+    killMonkeyTestProcess_cmd = 'adb -s '+device_id+' shell kill '+str(MonkeyTestProcess)
     commandLine(killMonkeyTestProcess_cmd).wait(10)
 
 
 #Definition for result save
-def monkeytest(createtime,deviceid,testpackagenames,runtime,gettime):
-    print(time.ctime()+"~~ Device "+deviceid+':Rebooting, please wait.')
-    deviceReboot_cmd='adb -s '+deviceid+' reboot'
+def monkeytest(create_time, device_id, test_package_names, running_time, catch_log_interval):
+    print(time.ctime()+"~~ Device "+device_id+':Rebooting, please wait.')
+    deviceReboot_cmd='adb -s '+device_id+' reboot'
     commandLine(deviceReboot_cmd).wait(10)
-    adbWaitForDevice_cmd='adb -s '+deviceid+' wait-for-device'
+    adbWaitForDevice_cmd='adb -s '+device_id+' wait-for-device'
     commandLine(adbWaitForDevice_cmd).wait(60)
 
-    print(time.ctime()+"~~ Device "+deviceid+':Wait 30s for device stable.')
+    print(time.ctime()+"~~ Device "+device_id+':Wait 30s for device stable.')
     time.sleep(30)
     
-    count=int(runtime*60*60*1000/500)
+    count = int(running_time*60*60*1000/500)
     
-    if adbstate(deviceid)=="device":
-        print(time.ctime()+"~~ Device "+deviceid+':Adb connection successful, wait for 5 minutes before test')
+    if adbstate(device_id) == "device":
+        print(time.ctime()+"~~ Device "+device_id+':Adb connection successful, wait for 5 minutes before test')
         time.sleep(300)
         
-        print(time.ctime()+"~~ Device "+deviceid+':Catching memory info before test.')
-        saveMemoryInfoBeforeTest='adb -s '+deviceid+' shell dumpsys meminfo > '+saveMemInfoBeforeTest(createtime,deviceid)
+        print(time.ctime()+"~~ Device "+device_id+':Catching memory info before test.')
+        saveMemoryInfoBeforeTest = 'adb -s '+device_id+' shell dumpsys meminfo > ' + \
+                                 saveMemInfoBeforeTest(create_time, device_id)
         commandLine(saveMemoryInfoBeforeTest).wait(30)
     
-        print(time.ctime()+"~~ Device "+deviceid+':Starting monkey test.')
-        monkey_cmd='adb -s '+deviceid+' shell monkey '+testpackagenames+'--throttle 500 --ignore-crashes --ignore-security-exceptions --ignore-timeouts --monitor-native-crashes -v -v '+str(count)+' > '+saveAdbLog(createtime,deviceid)
+        print(time.ctime()+"~~ Device "+device_id+':Starting monkey test.')
+        monkey_cmd = 'adb -s '+device_id+' shell monkey '+test_package_names + \
+                     '--throttle 500 --ignore-crashes --ignore-security-exceptions ' \
+                     '--ignore-timeouts --monitor-native-crashes -v -v ' + \
+                     str(count)+' > '+saveAdbLog(create_time, device_id)
         commandLine(monkey_cmd)
     
-        runcount=int(runtime/gettime)
+        running_count = int(running_time/catch_log_interval)
         
-        for i in range(runcount-1):
+        for i in range(running_count-1):
     
-            time.sleep(gettime*60)
+            time.sleep(catch_log_interval*60)
             
-            print(time.ctime()+"~~ Device "+deviceid+':Catching memory info.')
-            saveMemoryInfo_cmd='adb -s '+deviceid+' shell dumpsys meminfo > '+saveMemInfo(createtime,deviceid)
+            print(time.ctime()+"~~ Device "+device_id+':Catching memory info.')
+            saveMemoryInfo_cmd = 'adb -s '+device_id+' shell dumpsys meminfo > '+saveMemInfo(create_time, device_id)
             commandLine(saveMemoryInfo_cmd).wait(30)
             try:
-                print(time.ctime()+"~~ Device "+deviceid+':Killing monkey test process.')
-                killMonkeyTestProcess(deviceid)
-                print(time.ctime()+"~~ Device "+deviceid+':Monkey test process killed.')
+                print(time.ctime()+"~~ Device "+device_id+':Killing monkey test process.')
+                killMonkeyTestProcess(device_id)
+                print(time.ctime()+"~~ Device "+device_id+':Monkey test process killed.')
             
             except:
-                print(time.ctime()+"~~ Device "+deviceid+":Did not found monkey test process.")
+                print(time.ctime()+"~~ Device "+device_id+":Did not found monkey test process.")
                 
-            print(time.ctime()+"~~ Device "+deviceid+':Killing background processes.')
-            killAllBackgroundApps_cmd='adb -s '+deviceid+' shell am kill-all'
+            print(time.ctime()+"~~ Device "+device_id+':Killing background processes.')
+            killAllBackgroundApps_cmd = 'adb -s '+device_id+' shell am kill-all'
             commandLine(killAllBackgroundApps_cmd).wait(30)
             
-            print(time.ctime()+"~~ Device "+deviceid+':Catching memory info after clear processes.')
-            saveMemoryInfoAfterClearProcess_cmd='adb -s '+deviceid+' shell dumpsys meminfo > '+saveMemInfoAfterClearProcess(createtime,deviceid)
+            print(time.ctime()+"~~ Device "+device_id+':Catching memory info after clear processes.')
+            saveMemoryInfoAfterClearProcess_cmd = 'adb -s '+device_id+' shell dumpsys meminfo > '+\
+                                                  saveMemInfoAfterClearProcess(create_time, device_id)
             commandLine(saveMemoryInfoAfterClearProcess_cmd).wait(30)
     
-            print(time.ctime()+"~~ Device "+deviceid+':Starting monkey test.')
-            monkey_cmd='adb -s '+deviceid+' shell monkey '+testpackagenames+'--throttle 500 --ignore-crashes --ignore-security-exceptions --ignore-timeouts --monitor-native-crashes -v -v '+str(count)+' > '+saveAdbLog(createtime,deviceid)
+            print(time.ctime()+"~~ Device "+device_id+':Starting monkey test.')
+            monkey_cmd = 'adb -s '+device_id+' shell monkey '+test_package_names + \
+                         '--throttle 500 --ignore-crashes --ignore-security-exceptions ' \
+                         '--ignore-timeouts --monitor-native-crashes -v -v '\
+                         + str(count)+' > '+saveAdbLog(create_time, device_id)
             commandLine(monkey_cmd)
         
-        time.sleep(gettime*60)
+        time.sleep(catch_log_interval*60)
         
-        print(time.ctime()+"~~ Device "+deviceid+':Catching memory info.')
-        saveMemoryInfo_cmd='adb -s '+deviceid+' shell dumpsys meminfo > '+saveMemInfo(createtime,deviceid)
+        print(time.ctime()+"~~ Device "+device_id+':Catching memory info.')
+        saveMemoryInfo_cmd = 'adb -s '+device_id+' shell dumpsys meminfo > '+saveMemInfo(create_time, device_id)
         commandLine(saveMemoryInfo_cmd).wait(30)
         
         try:
-            print(time.ctime()+"~~ Device "+deviceid+':Killing monkey test process.')
-            killMonkeyTestProcess(deviceid).wait(30)
-            print(time.ctime()+"~~ Device "+deviceid+':Monkey test process killed.')
+            print(time.ctime()+"~~ Device "+device_id+':Killing monkey test process.')
+            killMonkeyTestProcess(device_id).wait(30)
+            print(time.ctime()+"~~ Device "+device_id+':Monkey test process killed.')
         
         except:
-            print(time.ctime()+"~~ Device "+deviceid+":Did not found monkey test process.")
+            print(time.ctime()+"~~ Device "+device_id+":Did not found monkey test process.")
         
-        print(time.ctime()+"~~ Device "+deviceid+':Killing background processes.')
-        killAllBackgroundApps_cmd='adb -s '+deviceid+' shell am kill-all'
+        print(time.ctime()+"~~ Device "+device_id+':Killing background processes.')
+        killAllBackgroundApps_cmd = 'adb -s '+device_id+' shell am kill-all'
         commandLine(killAllBackgroundApps_cmd).wait(30)
         
-        print(time.ctime()+"~~ Device "+deviceid+':Catching memory info after clear processes.')
-        saveMemoryInfoAfterClearProcess_cmd='adb -s '+deviceid+' shell dumpsys meminfo > '+saveMemInfoAfterClearProcess(createtime,deviceid)
+        print(time.ctime()+"~~ Device "+device_id+':Catching memory info after clear processes.')
+        saveMemoryInfoAfterClearProcess_cmd = 'adb -s '+device_id+' shell dumpsys meminfo > ' + \
+                                              saveMemInfoAfterClearProcess(create_time, device_id)
         commandLine(saveMemoryInfoAfterClearProcess_cmd).wait(30)
         
     else:
-        print(time.ctime()+"~~ Device "+deviceid+':Adb connection failed, please check and fix this.')
+        print(time.ctime()+"~~ Device "+device_id+':Adb connection failed, please check and fix this.')
 
-    print(time.ctime()+"~~ Device "+deviceid+':Test finished.')
+    print(time.ctime()+"~~ Device "+device_id+':Test finished.')
