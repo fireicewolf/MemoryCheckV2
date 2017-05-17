@@ -11,33 +11,33 @@ from scripts.monkey_test import monkeytest
 from scripts.Result_maker import resultMaker
  
 config = configparser.ConfigParser()
-config.read_file(open('monkeytest.ini'), 'r')
-runtime = int(config.get('config', 'Test Time(min)'))
-gettime = int(config.get('config', 'Catch log interval(min)'))
+config.read_file(open('monkey_test_config.ini'), 'r')
+test_running_time = int(config.get('config', 'Test Time(min)'))
+catch_log_interval = int(config.get('config', 'Catch log interval(min)'))
  
-createtime = time.strftime('%Y.%m.%d_%H-%M-%S', time.localtime())
-createResultDir(createtime)
-print(time.ctime()+"~~ :Test result will save in "+createResultDir(createtime)+".")
+create_dir_time = time.strftime('%Y.%m.%d_%H-%M-%S', time.localtime())
+createResultDir(create_dir_time)
+print(time.ctime() + "~~ :Test result will save in " + createResultDir(create_dir_time) + ".")
  
 threads = []
 
-for line in deviceList():
-    deviceid = str(line)
-    testpackages = (config.get('config', 'Test Packages'))
+for device in deviceList():
+    device_id = str(device)
+    test_package = (config.get('config', 'Test Packages'))
     
-    if testpackages == '':
-        testpackagenames = getAppPackageName(createtime, deviceid)
+    if test_package == '':
+        test_package_names = getAppPackageName(create_dir_time, device_id)
     else:
-        testpackages = testpackages.split(',')
-        testpackagenames = ''
-        for line in testpackages:
-            testpackagenames += '-p '+line+' '
-        print(time.ctime()+"~~ Device "+deviceid+':Packages '+str(testpackages)+' will be tested.')
+        test_package = test_package.split(',')
+        test_package_names = ''
+        for package in test_package:
+            test_package_names += '-p ' + package + ' '
+        print(time.ctime() + "~~ Device " + device_id + ':Packages ' + str(test_package) + ' will be tested.')
   
-    t1 = threading.Thread(target=monkeytest, args=(createtime, deviceid, testpackagenames, runtime, gettime,))
+    t1 = threading.Thread(target=monkeytest, args=(create_dir_time, device_id, test_package_names, test_running_time, catch_log_interval,))
     threads.append(t1)
  
-resultThread=threading.Thread(target=resultMaker, args=(createResultDir(createtime),))
+resultThread=threading.Thread(target=resultMaker, args=(createResultDir(create_dir_time),))
        
 if __name__ == '__main__':
     for t in threads:

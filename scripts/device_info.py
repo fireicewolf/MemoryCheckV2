@@ -9,53 +9,53 @@ def deviceList():
     devices_cmd = 'adb devices'
     devices = commandLine(devices_cmd).stdout.read()
     devices = devices.decode()
-    devices = re.split('\n|\r', devices)
-    devicelist = list()
+    devices = re.split('[\n\r]', devices)
+    device_list = list()
     for line in devices:
         line = line.split("\t")
         if line[-1] == "device":
-            deviceList.append(line[0])
+            device_list.append(line[0])
         if line[-1] == "offline":
             print("Device %s is offline, please check device status and reconnect it." % line[0])
         if line[-1] == "unauthorized":
             print("Device %s is unauthorized, please reconnect it and allow the USB debug permission." % line[0])
-    return devicelist
+    return device_list
 
 
-def adbstate(device_id):
-    adbstate_cmd = 'adb -s '+device_id+' get-state'
-    adbstate = commandLine(adbstate_cmd).stdout.read()
-    adbstate = adbstate.decode()
-    adbstate = adbstate.strip()
-    return adbstate
+def adbstatus(device_id):
+    adb_status_cmd = 'adb -s '+device_id+' get-state'
+    adb_status = commandLine(adb_status_cmd).stdout.read()
+    adb_status = adb_status.decode()
+    adb_status = adb_status.strip()
+    return adb_status
 
 
 # Definition for manufacture name
 def manufacturer(device_id):
     manufacturer_cmd = 'adb -s '+device_id+' shell getprop ro.product.manufacturer'
-    manufacturer = commandLine(manufacturer_cmd).stdout.read()
-    manufacturer = manufacturer.decode()
-    manufacturer = manufacturer.strip()
-    return str(manufacturer)
+    manufacturer_name = commandLine(manufacturer_cmd).stdout.read()
+    manufacturer_name = manufacturer_name.decode()
+    manufacturer_name = manufacturer_name.strip()
+    return str(manufacturer_name)
 
 
 # Definition for model name
 def model(device_id):
     model_cmd = 'adb -s '+device_id+' shell getprop ro.product.model'
-    model = commandLine(model_cmd).stdout.read()
-    model = model.decode()
-    model = model.strip()
-    return str(model)
+    model_name = commandLine(model_cmd).stdout.read()
+    model_name = model_name.decode()
+    model_name = model_name.strip()
+    return str(model_name)
 
 
 # Definition for build version
 def buildVersion(device_id):
     if manufacturer(device_id) == "GIONEE":
-        buildversion_cmd = 'adb -s '+device_id+' shell getprop ro.gn.gnznvernumber'
-        buildversion = commandLine(buildversion_cmd).stdout.read()
+        build_version_cmd = 'adb -s '+device_id+' shell getprop ro.gn.gnznvernumber'
+        build_version_code = commandLine(build_version_cmd).stdout.read()
     else:
-        buildversion_cmd = 'adb -s '+device_id+' shell getprop ro.build.version.incremental'
-        buildversion = commandLine(buildversion_cmd).stdout.read()
-    buildversion = buildversion.decode()
-    buildversion = buildversion.strip()
-    return str(buildversion)
+        build_version_cmd = 'adb -s '+device_id+' shell getprop ro.build.version.incremental'
+        build_version_code = commandLine(build_version_cmd).stdout.read()
+    build_version_code = build_version_code.decode()
+    build_version_code = build_version_code.strip()
+    return str(build_version_code)
