@@ -167,10 +167,10 @@ def resultMaker(savepath):
                     worksheet.write('G'+processCellRowNum,processName,processNameCellFormat)
                     worksheet.write('H'+processCellRowNum,processMemUsage,numCellFormat)
                  
-                worksheet.write('I'+titleRowNum,'Free RAM',greyTitleFormat)
+                worksheet.write('I'+titleRowNum,'Free RAM (MB)',greyTitleFormat)
                 worksheet.merge_range('I'+cellRowStartNum+':I'+cellRowEndNum,freeRAM,numCellFormat)
                  
-                worksheet.write('J'+titleRowNum,'Used RAM',greyTitleFormat)
+                worksheet.write('J'+titleRowNum,'Used RAM (MB)',greyTitleFormat)
                 worksheet.merge_range('J'+cellRowStartNum+':J'+cellRowEndNum,usedRAM,numCellFormat)
                 
     workbook.close()
