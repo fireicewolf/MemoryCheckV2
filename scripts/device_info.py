@@ -1,11 +1,11 @@
-#coding=utf-8
+# coding=utf-8
 
 import re
-from scripts.command_line import commandLine
+from .command_line import commandLine
 
-#Definition for device lists
+
+# Definition for device lists
 def deviceList():
-    
     devices_cmd='adb devices'
     devices=commandLine(devices_cmd).stdout.read()
     devices=devices.decode()
@@ -21,6 +21,7 @@ def deviceList():
             print("Device %s is unauthorized, please reconnect it and allow the USB debug permission."%line[0])
     return deviceList
 
+
 def adbstate(deviceid):
     adbstate_cmd='adb -s '+deviceid+' get-state'
     adbstate=commandLine(adbstate_cmd).stdout.read()
@@ -28,15 +29,17 @@ def adbstate(deviceid):
     adbstate=adbstate.strip()
     return adbstate
 
-#Definition for manufacture name
+
+# Definition for manufacture name
 def manufacturer(deviceid):
     manufacturer_cmd='adb -s '+deviceid+' shell getprop ro.product.manufacturer'
     manufacturer=commandLine(manufacturer_cmd).stdout.read()
     manufacturer=manufacturer.decode()
     manufacturer=manufacturer.strip()
     return str(manufacturer)
-    
-#Definition for model name
+
+
+# Definition for model name
 def model(deviceid):
     model_cmd='adb -s '+deviceid+' shell getprop ro.product.model'
     model=commandLine(model_cmd).stdout.read()
@@ -44,7 +47,8 @@ def model(deviceid):
     model=model.strip()
     return str(model)
 
-#Definition for build version
+
+# Definition for build version
 def buildVersion(deviceid):
     if manufacturer(deviceid)== "GIONEE":
         buildversion_cmd='adb -s '+deviceid+' shell getprop ro.gn.gnznvernumber'

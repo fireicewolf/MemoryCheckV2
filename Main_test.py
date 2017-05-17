@@ -11,33 +11,33 @@ from scripts.monkey_test import monkeytest
 from scripts.Result_maker import resultMaker
  
 config = configparser.ConfigParser()
-config.read_file(open('monkeytest.ini'),'r')
-runtime=int(config.get('config','Test Time(min)'))
-gettime=int(config.get('config','Catch log interval(min)'))
+config.read_file(open('monkeytest.ini'), 'r')
+runtime = int(config.get('config', 'Test Time(min)'))
+gettime = int(config.get('config', 'Catch log interval(min)'))
  
-createtime=time.strftime('%Y.%m.%d_%H-%M-%S',time.localtime())
+createtime = time.strftime('%Y.%m.%d_%H-%M-%S', time.localtime())
 createResultDir(createtime)
 print(time.ctime()+"~~ :Test result will save in "+createResultDir(createtime)+".")
  
 threads = []
 
 for line in deviceList():
-    deviceid=str(line)
-    testpackages=(config.get('config','Test Packages'))
+    deviceid = str(line)
+    testpackages = (config.get('config', 'Test Packages'))
     
     if testpackages == '':
-        testpackagenames = getAppPackageName(createtime,deviceid)
+        testpackagenames = getAppPackageName(createtime, deviceid)
     else:
-        testpackages=testpackages.split(',')
-        testpackagenames=''
+        testpackages = testpackages.split(',')
+        testpackagenames = ''
         for line in testpackages:
-            testpackagenames +='-p '+line+' '
+            testpackagenames += '-p '+line+' '
         print(time.ctime()+"~~ Device "+deviceid+':Packages '+str(testpackages)+' will be tested.')
   
-    t1 = threading.Thread(target=monkeytest,args=(createtime,deviceid,testpackagenames,runtime,gettime,))
+    t1 = threading.Thread(target=monkeytest, args=(createtime,deviceid,testpackagenames,runtime,gettime,))
     threads.append(t1)
  
-resultThread=threading.Thread(target=resultMaker,args=(createResultDir(createtime),))
+resultThread=threading.Thread(target=resultMaker, args=(createResultDir(createtime),))
        
 if __name__ == '__main__':
     for t in threads:

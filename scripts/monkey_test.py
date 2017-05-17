@@ -2,17 +2,18 @@
 import os
 import time
 
-from scripts.command_line import commandLine
+from .command_line import commandLine
 
-from scripts.create_dirctory import createpackageListDir
+from .create_dirctory import createpackageListDir
 
-from scripts.device_info import adbstate
+from .device_info import adbstate
 
-from scripts.save_files import saveAdbLog
-from scripts.save_files import saveMemInfoBeforeTest
-from scripts.save_files import saveMemInfo
-from scripts.save_files import saveMemInfoAfterClearProcess
-    
+from .save_files import saveAdbLog
+from .save_files import saveMemInfoBeforeTest
+from .save_files import saveMemInfo
+from .save_files import saveMemInfoAfterClearProcess
+
+
 def getAppPackageName(createtime,deviceid):
     installViewApk_cmd='adb -s '+deviceid+' install -r -g package_name_viewer.apk'
     commandLine(installViewApk_cmd).wait(10)
@@ -42,8 +43,8 @@ def getAppPackageName(createtime,deviceid):
     for line in applists:
         line=line.strip('\n')
         testpackages +='-p '+line+' '
-        
     return testpackages
+
 
 def killMonkeyTestProcess(deviceid):
     viewMonkeyTestProcess_cmd='adb -s '+deviceid+' shell "ps | grep monkey"'
@@ -53,11 +54,10 @@ def killMonkeyTestProcess(deviceid):
     
     killMonkeyTestProcess_cmd='adb -s '+deviceid+' shell kill '+str(MonkeyTestProcess)
     commandLine(killMonkeyTestProcess_cmd).wait(10)
-        
+
+
 #Definition for result save
 def monkeytest(createtime,deviceid,testpackagenames,runtime,gettime):
-#     testpackagenames=getAppPackageName(createtime,deviceid)  
-    
     print(time.ctime()+"~~ Device "+deviceid+':Rebooting, please wait.')
     deviceReboot_cmd='adb -s '+deviceid+' reboot'
     commandLine(deviceReboot_cmd).wait(10)
@@ -135,5 +135,4 @@ def monkeytest(createtime,deviceid,testpackagenames,runtime,gettime):
     else:
         print(time.ctime()+"~~ Device "+deviceid+':Adb connection failed, please check and fix this.')
 
-    
     print(time.ctime()+"~~ Device "+deviceid+':Test finished.')
