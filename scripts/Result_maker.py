@@ -9,6 +9,8 @@ def resultMaker(save_path):
     memory_info_dir = save_path + 'dumpsys_logs'
     result_name = save_path + "Test Result.xlsx"
 
+    print(time.ctime()+"~~ Saving test result: " + result_name)
+
     workbook = xlsxwriter.Workbook(result_name)
     for dirpath, dirnames, filenames in os.walk(memory_info_dir):
         for dirname in dirnames:
@@ -93,7 +95,7 @@ def resultMaker(save_path):
                         worksheet.write('H5', freeRAM, green_title_num_format)
                         worksheet.write('I5', 'Used RAM (MB)', green_title_format)
                         worksheet.write('J5', usedRAM, green_title_num_format)
-                        worksheet.merge_range('A6:J6', 'Before Test', yellow_title_format)
+                        worksheet.merge_range('A6:J6', 'Test Result', yellow_title_format)
 
                     if filename.startswith('meminfo_before_clear_process_'):
                         memory_info_before_clear_process_list.append(filename)
@@ -184,14 +186,36 @@ def resultMaker(save_path):
                     process_mem_usage = float(int(process_mem_usage)/1000)
                     process_cell_row_num = str(8+b+i*6)
                     
-                    worksheet.write('G'+process_cell_row_num, process_name, process_name_cell_format)
-                    worksheet.write('H'+process_cell_row_num, process_mem_usage, num_cell_format)
+                    worksheet.write('G' + process_cell_row_num, process_name, process_name_cell_format)
+                    worksheet.write('H' + process_cell_row_num, process_mem_usage, num_cell_format)
                  
-                worksheet.write('I'+title_row_num, 'Free RAM (MB)', grey_title_format)
-                worksheet.merge_range('I'+cell_row_start_num+':I'+cell_row_end_num, freeRAM, num_cell_format)
+                worksheet.write('I' + title_row_num, 'Free RAM (MB)', grey_title_format)
+                worksheet.merge_range('I' + cell_row_start_num+':I' + cell_row_end_num, freeRAM, num_cell_format)
                  
-                worksheet.write('J'+title_row_num, 'Used RAM (MB)', grey_title_format)
-                worksheet.merge_range('J'+cell_row_start_num+':J'+cell_row_end_num, usedRAM, num_cell_format)
-                
+                worksheet.write('J' + title_row_num, 'Used RAM (MB)', grey_title_format)
+                worksheet.merge_range('J' + cell_row_start_num+':J' + cell_row_end_num, usedRAM, num_cell_format)
+
+            worksheet.merge_range('A' + str(int(cell_row_end_num) + 1) + ':C' + str(int(cell_row_end_num) + 2)
+                                  , 'Before clearing process', grey_title_format)
+            worksheet.write('D' + str(int(cell_row_end_num) + 1), 'Average Free RAM (MB)', grey_title_format)
+            worksheet.write('E' + str(int(cell_row_end_num) + 1), 'Average Used RAM (MB)', grey_title_format)
+
+            worksheet.write('D' + str(int(cell_row_end_num) + 2), '=AVERAGE(D8:D' + str(cell_row_start_num) + ')'
+                            , default_cell_format)
+            worksheet.write('E' + str(int(cell_row_end_num) + 2), '=AVERAGE(E8:E' + str(cell_row_start_num) + ')'
+                            , default_cell_format)
+
+            worksheet.merge_range('F' + str(int(cell_row_end_num) + 1) + ':H' + str(int(cell_row_end_num) + 2)
+                                  , 'After clearing process', grey_title_format)
+            worksheet.write('I' + str(int(cell_row_end_num) + 1), 'Average Free RAM (MB)', grey_title_format)
+            worksheet.write('J' + str(int(cell_row_end_num) + 1), 'Average Used RAM (MB)', grey_title_format)
+
+            worksheet.write('I' + str(int(cell_row_end_num) + 2), '=AVERAGE(I8:I' + str(cell_row_start_num) + ')'
+                            , default_cell_format)
+            worksheet.write('J' + str(int(cell_row_end_num) + 2), '=AVERAGE(J8:J' + str(cell_row_start_num) + ')'
+                            , default_cell_format)
+
     workbook.close()
-    print(time.ctime()+"~~ Test result saved.")
+    print(time.ctime()+"~~ '" + result_name + "' saved.")
+#
+# resultMaker('..\\Result\\2017.06.15_14-44-39\\')

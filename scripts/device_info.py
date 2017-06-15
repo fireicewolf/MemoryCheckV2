@@ -59,3 +59,25 @@ def buildVersion(device_id):
     build_version_code = build_version_code.decode()
     build_version_code = build_version_code.strip()
     return str(build_version_code)
+
+
+# Definition for screen resolution
+def deviceScreenResolution(device_id):
+    screenResolution_cmd = "adb -s " + device_id + " shell wm size"
+    screenResolution = commandLine(screenResolution_cmd).stdout.read().strip()
+    screenResolution = str(screenResolution)
+    screenResolution = screenResolution.strip("b'Physical size: ")
+    screenResolution = screenResolution.split('x')
+    return screenResolution
+
+
+# Definition for screen width
+def deviceScreenWidth(device_id):
+    deviceScreenWidth = deviceScreenResolution(device_id)[0]
+    return int(deviceScreenWidth)
+
+
+# Definition for screen height
+def deviceScreenHeight(device_id):
+    deviceScreenHeight = deviceScreenResolution(device_id)[1]
+    return int(deviceScreenHeight)

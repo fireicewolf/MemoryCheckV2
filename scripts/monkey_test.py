@@ -12,6 +12,8 @@ from .save_files import saveAdbLog
 from .save_files import saveMemInfoBeforeTest
 from .save_files import saveMemInfo
 from .save_files import saveMemInfoAfterClearProcess
+from .device_info import deviceScreenWidth
+from .device_info import deviceScreenHeight
 
 
 def getAppPackageName(create_time, device_id):
@@ -58,7 +60,14 @@ def killMonkeyTestProcess(device_id):
 
 
 #Definition for result save
-def monkeytest(create_time, device_id, test_package_names, running_time, catch_log_interval):
+def monkeytest(create_time, device_id, test_package_names, running_time, catch_log_interval, is_clean_background_progress):
+    screenWidth = deviceScreenWidth(device_id)
+    screenHeight = deviceScreenHeight(device_id)
+
+    kill_all_background_apps_cmd = 'adb -s ' + device_id \
+                                   + ' shell input keyevent KEYCODE_APP_SWITCH; input tap ' \
+                                   + str(int(540 / 1080 * screenWidth)) + ' ' + str(int(1580 / 1920 * screenHeight))
+
     print(time.ctime()+"~~ Device "+device_id+':Rebooting, please wait.')
     device_reboot_cmd = 'adb -s '+device_id+' reboot'
     commandLine(device_reboot_cmd).wait(10)
@@ -91,10 +100,6 @@ def monkeytest(create_time, device_id, test_package_names, running_time, catch_l
         for i in range(running_count-1):
     
             time.sleep(catch_log_interval*60)
-            
-            print(time.ctime()+"~~ Device "+device_id+':Catching memory info.')
-            save_memory_info_cmd = 'adb -s '+device_id+' shell dumpsys meminfo > '+saveMemInfo(create_time, device_id)
-            commandLine(save_memory_info_cmd).wait(30)
             try:
                 print(time.ctime()+"~~ Device "+device_id+':Killing monkey test process.')
                 killMonkeyTestProcess(device_id)
@@ -102,10 +107,14 @@ def monkeytest(create_time, device_id, test_package_names, running_time, catch_l
             
             except:
                 print(time.ctime()+"~~ Device "+device_id+":Did not found monkey test process.")
+
+            print(time.ctime()+"~~ Device "+device_id+':Catching memory info.')
+            save_memory_info_cmd = 'adb -s '+device_id+' shell dumpsys meminfo > '+saveMemInfo(create_time, device_id)
+            commandLine(save_memory_info_cmd).wait(30)
                 
-            print(time.ctime()+"~~ Device "+device_id+':Killing background processes.')
-            kill_all_background_apps_cmd = 'adb -s '+device_id+' shell am kill-all'
-            commandLine(kill_all_background_apps_cmd).wait(30)
+            if is_clean_background_progress == 'yes':
+                print(time.ctime()+"~~ Device "+device_id+':Killing background processes.')
+                commandLine(kill_all_background_apps_cmd).wait(30)
             
             print(time.ctime()+"~~ Device "+device_id+':Catching memory info after clear processes.')
             save_memory_info_after_clear_process_cmd = 'adb -s '+device_id+' shell dumpsys meminfo > ' + \
@@ -120,11 +129,7 @@ def monkeytest(create_time, device_id, test_package_names, running_time, catch_l
             commandLine(monkey_cmd)
         
         time.sleep(catch_log_interval*60)
-        
-        print(time.ctime()+"~~ Device "+device_id+':Catching memory info.')
-        save_memory_info_cmd = 'adb -s '+device_id+' shell dumpsys meminfo > '+saveMemInfo(create_time, device_id)
-        commandLine(save_memory_info_cmd).wait(30)
-        
+
         try:
             print(time.ctime()+"~~ Device "+device_id+':Killing monkey test process.')
             killMonkeyTestProcess(device_id).wait(30)
@@ -132,10 +137,14 @@ def monkeytest(create_time, device_id, test_package_names, running_time, catch_l
         
         except:
             print(time.ctime()+"~~ Device "+device_id+":Did not found monkey test process.")
-        
-        print(time.ctime()+"~~ Device "+device_id+':Killing background processes.')
-        kill_all_background_apps_cmd = 'adb -s '+device_id+' shell am kill-all'
-        commandLine(kill_all_background_apps_cmd).wait(30)
+
+        print(time.ctime()+"~~ Device "+device_id+':Catching memory info.')
+        save_memory_info_cmd = 'adb -s '+device_id+' shell dumpsys meminfo > '+saveMemInfo(create_time, device_id)
+        commandLine(save_memory_info_cmd).wait(30)
+
+        if is_clean_background_progress == 'yes':
+            print(time.ctime()+"~~ Device "+device_id+':Killing background processes.')
+            commandLine(kill_all_background_apps_cmd).wait(30)
         
         print(time.ctime()+"~~ Device "+device_id+':Catching memory info after clear processes.')
         save_memory_info_after_clear_process_cmd = 'adb -s '+device_id+' shell dumpsys meminfo > ' + \
