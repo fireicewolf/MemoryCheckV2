@@ -131,7 +131,7 @@ def resultMaker(save_path):
                                       get_memory_info_time, default_cell_format)
                  
                 worksheet.write('B'+title_row_num, 'Top 5 Process', grey_title_format)
-                worksheet.write('C'+title_row_num, 'Memory Usage', grey_title_format)
+                worksheet.write('C'+title_row_num, 'Memory Usage (MB)', grey_title_format)
                 
                 for a in range(8, 17, 2):
                     b = int(a/2-4)
@@ -177,7 +177,7 @@ def resultMaker(save_path):
                                       get_memory_info_time, default_cell_format)
                  
                 worksheet.write('G'+title_row_num, 'Top 5 Process', grey_title_format)
-                worksheet.write('H'+title_row_num, 'Memory Usage', grey_title_format)
+                worksheet.write('H'+title_row_num, 'Memory Usage (MB)', grey_title_format)
                 
                 for a in range(8, 17, 2):
                     b = int(a/2-4)

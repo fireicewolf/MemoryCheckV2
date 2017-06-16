@@ -6,7 +6,7 @@ from .command_line import commandLine
 
 from .create_dirctory import createpackageListDir
 
-from .device_info import adbstatus
+from .device_info import adbstatus, model
 
 from .save_files import saveAdbLog
 from .save_files import saveMemInfoBeforeTest
@@ -64,15 +64,23 @@ def monkeytest(create_time, device_id, test_package_names, running_time, catch_l
     screenWidth = deviceScreenWidth(device_id)
     screenHeight = deviceScreenHeight(device_id)
 
-    kill_all_background_apps_cmd = 'adb -s ' + device_id \
-                                   + ' shell input keyevent KEYCODE_APP_SWITCH; input tap ' \
-                                   + str(int(540 / 1080 * screenWidth)) + ' ' + str(int(1580 / 1920 * screenHeight))
+    if model(device_id) == 'W909':
+        kill_all_background_apps_cmd = 'adb -s ' + device_id \
+                                       + ' shell input keyevent KEYCODE_APP_SWITCH; input tap 360 1115'
+    else:
+        kill_all_background_apps_cmd = 'adb -s ' + device_id \
+                                       + ' shell input keyevent KEYCODE_APP_SWITCH; input tap ' \
+                                       + str(int(540 / 1080 * screenWidth)) + ' ' + str(int(1580 / 1920 * screenHeight))
 
     print(time.ctime()+"~~ Device "+device_id+':Rebooting, please wait.')
     device_reboot_cmd = 'adb -s '+device_id+' reboot'
     commandLine(device_reboot_cmd).wait(10)
-    adb_wait_for_device_cmd = 'adb -s '+device_id+' wait-for-device'
-    commandLine(adb_wait_for_device_cmd).wait(60)
+
+    adb_wait_for_device_cmd = 'adb -s ' + device_id + ' wait-for-device'
+    try:
+        commandLine(adb_wait_for_device_cmd).wait(90)
+    except:
+        print(time.ctime()+"~~ Device "+device_id+':Connection timeout after 90s, test will not execute.')
 
     print(time.ctime()+"~~ Device "+device_id+':Wait 30s for device stable.')
     time.sleep(30)
@@ -80,7 +88,7 @@ def monkeytest(create_time, device_id, test_package_names, running_time, catch_l
     count = int(running_time*60*60*1000/500)
     
     if adbstatus(device_id) == "device":
-        print(time.ctime()+"~~ Device "+device_id+':Adb connection successful, wait for 5 minutes before test')
+        print(time.ctime()+"~~ Device "+device_id+':Connection successful, wait for 5 minutes before test')
         time.sleep(300)
         
         print(time.ctime()+"~~ Device "+device_id+':Catching memory info before test.')
@@ -122,10 +130,10 @@ def monkeytest(create_time, device_id, test_package_names, running_time, catch_l
             commandLine(save_memory_info_after_clear_process_cmd).wait(30)
     
             print(time.ctime()+"~~ Device "+device_id+':Starting monkey test.')
-            monkey_cmd = 'adb -s '+device_id+' shell monkey '+test_package_names + \
-                         '--throttle 500 --ignore-crashes --ignore-security-exceptions ' \
-                         '--ignore-timeouts --monitor-native-crashes -v -v '\
-                         + str(count)+' > '+saveAdbLog(create_time, device_id)
+            # monkey_cmd = 'adb -s '+device_id+' shell monkey '+test_package_names + \
+            #              '--throttle 500 --ignore-crashes --ignore-security-exceptions ' \
+            #              '--ignore-timeouts --monitor-native-crashes -v -v '\
+            #              + str(count)+' > '+saveAdbLog(create_time, device_id)
             commandLine(monkey_cmd)
         
         time.sleep(catch_log_interval*60)
@@ -152,6 +160,6 @@ def monkeytest(create_time, device_id, test_package_names, running_time, catch_l
         commandLine(save_memory_info_after_clear_process_cmd).wait(30)
         
     else:
-        print(time.ctime()+"~~ Device "+device_id+':Adb connection failed, please check and fix this.')
+        print(time.ctime()+"~~ Device "+device_id+':Connection failed, please check and fix this.')
 
     print(time.ctime()+"~~ Device "+device_id+':Test finished.')
