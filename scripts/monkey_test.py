@@ -17,7 +17,7 @@ from .device_info import deviceScreenHeight
 
 
 def getAppPackageName(create_time, device_id):
-    install_view_apk_cmd = 'adb -s '+device_id+' install -r -g package_name_viewer.apk'
+    install_view_apk_cmd = 'adb -s '+device_id+' install -r package_name_viewer.apk'
     commandLine(install_view_apk_cmd).wait(10)
     
     launch_view_apk_cmd = 'adb -s '+device_id+' shell am start -n com.gionee.packages/com.gionee.packages.MainActivity'
