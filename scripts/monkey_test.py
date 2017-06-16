@@ -1,5 +1,4 @@
 #coding=utf-8
-import os
 import time
 
 from .command_line import commandLine
@@ -19,33 +18,41 @@ from .device_info import deviceScreenHeight
 def getAppPackageName(create_time, device_id):
     install_view_apk_cmd = 'adb -s '+device_id+' install -r package_name_viewer.apk'
     commandLine(install_view_apk_cmd).wait(10)
-    
+
     launch_view_apk_cmd = 'adb -s '+device_id+' shell am start -n com.gionee.packages/com.gionee.packages.MainActivity'
     commandLine(launch_view_apk_cmd).wait(10)
 
     save_list_to_pc_cmd = 'adb -s '+device_id+' pull /sdcard/packages_visual.txt ' + \
                           createpackageListDir(create_time, device_id)+'packages_names_list.txt'
     commandLine(save_list_to_pc_cmd).wait(10)
-    
+
     uninstall_view_apk_cmd = 'adb -s '+device_id+' uninstall com.gionee.packages'
     commandLine(uninstall_view_apk_cmd).wait(10)
-    
+
     remove_list_in_phone_cmd = 'adb -s '+device_id+' shell rm /sdcard/packages_visual.txt'
     commandLine(remove_list_in_phone_cmd).wait(10)
 
     print(time.ctime()+"~~ Device "+device_id+":Get app's package names success.")
-    
+
+    # getPackageNames_cmd = 'adb -s ' + device_id + ' shell pm list packages > ' \
+    #                       + createpackageListDir(create_time, device_id)+'packages_names_list.txt'
+    # commandLine(getPackageNames_cmd).wait(10)
+
     openapplists = open(createpackageListDir(create_time, device_id)+'packages_names_list.txt', 'r')
     applists = openapplists.readlines()
     openapplists.close()
-    
+
     print(time.ctime()+"~~ Device "+device_id+':App lists load successfully, total '+str(len(applists))+' apps.')
     
     test_packages = ''
     
     for line in applists:
-        line = line.strip('\n')
-        test_packages += '-p '+line+' '
+        if line == '\n':
+            pass
+        else:
+            line = line.strip('\n')
+            # line = line.replace('package:', '')
+            test_packages += '-p '+line+' '
     return test_packages
 
 
@@ -60,7 +67,8 @@ def killMonkeyTestProcess(device_id):
 
 
 #Definition for result save
-def monkeytest(create_time, device_id, test_package_names, running_time, catch_log_interval, is_clean_background_progress):
+def monkeytest(create_time, device_id, test_package_names, running_time, catch_log_interval,
+               is_clean_background_progress):
     screenWidth = deviceScreenWidth(device_id)
     screenHeight = deviceScreenHeight(device_id)
 
