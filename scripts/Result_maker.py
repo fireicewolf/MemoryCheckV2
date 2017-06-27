@@ -63,14 +63,14 @@ def resultMaker(save_path):
 
             memory_info_before_clear_process_list = list()
             memory_info_after_clear_process_list = list()
-            for dirpath, dirnames, filenames in os.walk(memory_info_dir+os.path.sep+dirname):
-                for filename in filenames:
-                    if filename.startswith('meminfo_before_test_'):
-                        get_memory_info_time = filename.strip('meminfo_before_test_|.txt')
+            for resultdirpath, resultdirnames, resultfilenames in os.walk(memory_info_dir+os.path.sep+dirname):
+                for resultfilename in resultfilenames:
+                    if resultfilename.startswith('meminfo_before_test_'):
+                        get_memory_info_time = resultfilename.strip('meminfo_before_test_|.txt')
                         get_memory_info_time = get_memory_info_time.replace('_', ' ')
                         get_memory_info_time = get_memory_info_time.replace('-', ':')
                         
-                        with open(memory_info_dir+os.path.sep+dirname+os.path.sep+filename, 'r') as f:
+                        with open(memory_info_dir+os.path.sep+dirname+os.path.sep+resultfilename, 'r') as f:
                             file = f.readlines()
                             
                         for line in file:
@@ -86,6 +86,10 @@ def resultMaker(save_path):
                                 line = line.strip('Used RAM: ')
                                 line = line.split('kB')
                                 usedRAM = float(int(line[0])/1000)
+                            else:
+                                totalRAM = "null"
+                                freeRAM = "null"
+                                usedRAM = "null"
 
                         worksheet.merge_range('A5:B5', 'Test Time', green_title_format)
                         worksheet.merge_range('C5:D5', get_memory_info_time, green_title_format)
@@ -97,11 +101,11 @@ def resultMaker(save_path):
                         worksheet.write('J5', usedRAM, green_title_num_format)
                         worksheet.merge_range('A6:J6', 'Test Result', yellow_title_format)
 
-                    if filename.startswith('meminfo_before_clear_process_'):
-                        memory_info_before_clear_process_list.append(filename)
+                    if resultfilename.startswith('meminfo_before_clear_process_'):
+                        memory_info_before_clear_process_list.append(resultfilename)
 
-                    if filename.startswith('meminfo_after_clear_process_'):
-                        memory_info_after_clear_process_list.append(filename)
+                    if resultfilename.startswith('meminfo_after_clear_process_'):
+                        memory_info_after_clear_process_list.append(resultfilename)
 
             for i in range(len(memory_info_before_clear_process_list)):
                 filename = memory_info_before_clear_process_list[i]
@@ -195,27 +199,26 @@ def resultMaker(save_path):
                 worksheet.write('J' + title_row_num, 'Used RAM (MB)', grey_title_format)
                 worksheet.merge_range('J' + cell_row_start_num+':J' + cell_row_end_num, usedRAM, num_cell_format)
 
-            worksheet.merge_range('A' + str(int(cell_row_end_num) + 1) + ':C' + str(int(cell_row_end_num) + 2)
-                                  , 'Before clearing process', grey_title_format)
+            worksheet.merge_range('A' + str(int(cell_row_end_num) + 1) + ':C' + str(int(cell_row_end_num) + 2),
+                                  'Before clearing process', grey_title_format)
             worksheet.write('D' + str(int(cell_row_end_num) + 1), 'Average Free RAM (MB)', grey_title_format)
             worksheet.write('E' + str(int(cell_row_end_num) + 1), 'Average Used RAM (MB)', grey_title_format)
 
-            worksheet.write('D' + str(int(cell_row_end_num) + 2), '=AVERAGE(D8:D' + str(cell_row_start_num) + ')'
-                            , default_cell_format)
-            worksheet.write('E' + str(int(cell_row_end_num) + 2), '=AVERAGE(E8:E' + str(cell_row_start_num) + ')'
-                            , default_cell_format)
+            worksheet.write('D' + str(int(cell_row_end_num) + 2), '=AVERAGE(D8:D' + str(cell_row_start_num) + ')',
+                            default_cell_format)
+            worksheet.write('E' + str(int(cell_row_end_num) + 2), '=AVERAGE(E8:E' + str(cell_row_start_num) + ')',
+                            default_cell_format)
 
-            worksheet.merge_range('F' + str(int(cell_row_end_num) + 1) + ':H' + str(int(cell_row_end_num) + 2)
-                                  , 'After clearing process', grey_title_format)
+            worksheet.merge_range('F' + str(int(cell_row_end_num) + 1) + ':H' + str(int(cell_row_end_num) + 2),
+                                  'After clearing process', grey_title_format)
             worksheet.write('I' + str(int(cell_row_end_num) + 1), 'Average Free RAM (MB)', grey_title_format)
             worksheet.write('J' + str(int(cell_row_end_num) + 1), 'Average Used RAM (MB)', grey_title_format)
 
-            worksheet.write('I' + str(int(cell_row_end_num) + 2), '=AVERAGE(I8:I' + str(cell_row_start_num) + ')'
-                            , default_cell_format)
-            worksheet.write('J' + str(int(cell_row_end_num) + 2), '=AVERAGE(J8:J' + str(cell_row_start_num) + ')'
-                            , default_cell_format)
+            worksheet.write('I' + str(int(cell_row_end_num) + 2), '=AVERAGE(I8:I' + str(cell_row_start_num) + ')',
+                            default_cell_format)
+            worksheet.write('J' + str(int(cell_row_end_num) + 2), '=AVERAGE(J8:J' + str(cell_row_start_num) + ')',
+                            default_cell_format)
 
     workbook.close()
     print(time.ctime()+"~~ '" + result_name + "' saved.")
-#
-# resultMaker('..\\Result\\2017.06.15_14-44-39\\')
+# resultMaker('..\\Result\\2017.06.26_16-35-58\\')

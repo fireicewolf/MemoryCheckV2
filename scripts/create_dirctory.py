@@ -20,7 +20,8 @@ def createResultDir(create_time):
 
 
 def deviceDirName(device_id):
-    device_dir_name = manufacturer(device_id) + '__' + model(device_id) + '__' + device_id + '__' + buildVersion(device_id)
+    device_dir_name = manufacturer(device_id) + '__' + model(device_id) + '__' + device_id + '__' +\
+                      buildVersion(device_id)
     return device_dir_name
 
 

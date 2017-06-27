@@ -21,7 +21,7 @@ def saveMemInfoBeforeTest(create_time, device_id):
 def saveMemInfo(create_time, device_id):
     dumpsyslogsdir = createdumpsysLogsDir(create_time, device_id)
     save_mem_info = dumpsyslogsdir+'meminfo_before_clear_process_' + time.strftime(
-        '%Y.%m.%d_%H-%M-%S',time.localtime())+'.txt'
+        '%Y.%m.%d_%H-%M-%S', time.localtime())+'.txt'
     return save_mem_info
 
 
