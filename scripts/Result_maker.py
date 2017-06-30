@@ -86,10 +86,10 @@ def resultMaker(save_path):
                                 line = line.strip('Used RAM: ')
                                 line = line.split('kB')
                                 usedRAM = float(int(line[0])/1000)
-                            else:
-                                totalRAM = "null"
-                                freeRAM = "null"
-                                usedRAM = "null"
+                            # else:
+                            #     totalRAM = "null"
+                            #     freeRAM = "null"
+                            #     usedRAM = "null"
 
                         worksheet.merge_range('A5:B5', 'Test Time', green_title_format)
                         worksheet.merge_range('C5:D5', get_memory_info_time, green_title_format)
@@ -141,17 +141,17 @@ def resultMaker(save_path):
                     b = int(a/2-4)
                     process_name = file[a].strip().split('kB: ')[1]
                     process_mem_usage = file[a].strip().split('kB: ')[0]
-                    process_mem_usage = float(int(process_mem_usage)/1000)
-                    process_cell_row_num = str(8+b+i*6)
+                    process_mem_usage = float(int(process_mem_usage) / 1000)
+                    process_cell_row_num = str(8 + b + i * 6)
                     
-                    worksheet.write('B'+process_cell_row_num, process_name, process_name_cell_format)
-                    worksheet.write('C'+process_cell_row_num, process_mem_usage, num_cell_format)
+                    worksheet.write('B' + process_cell_row_num, process_name, process_name_cell_format)
+                    worksheet.write('C' + process_cell_row_num, process_mem_usage, num_cell_format)
                  
-                worksheet.write('D'+title_row_num, 'Free RAM (MB)', grey_title_format)
-                worksheet.merge_range('D'+cell_row_start_num+':D'+cell_row_end_num, freeRAM, num_cell_format)
+                worksheet.write('D' + title_row_num, 'Free RAM (MB)', grey_title_format)
+                worksheet.merge_range('D' + cell_row_start_num+':D'+cell_row_end_num, freeRAM, num_cell_format)
                  
-                worksheet.write('E'+title_row_num, 'Used RAM (MB)', grey_title_format)
-                worksheet.merge_range('E'+cell_row_start_num+':E'+cell_row_end_num, usedRAM, num_cell_format)
+                worksheet.write('E' + title_row_num, 'Used RAM (MB)', grey_title_format)
+                worksheet.merge_range('E' + cell_row_start_num+':E'+cell_row_end_num, usedRAM, num_cell_format)
                 
             for i in range(len(memory_info_after_clear_process_list)):
                 filename = memory_info_after_clear_process_list[i]
@@ -166,29 +166,29 @@ def resultMaker(save_path):
                     if "Free RAM:" in line:
                         line = line.strip('Free RAM: ')
                         line = line.split('kB')
-                        freeRAM = float(int(line[0])/1000)
+                        freeRAM = float(int(line[0]) / 1000)
                     if "Used RAM:" in line:
                         line = line.strip('Used RAM: ')
                         line = line.split('kB')
-                        usedRAM = float(int(line[0])/1000)
+                        usedRAM = float(int(line[0]) / 1000)
 
-                title_row_num = str(7+i*6)
-                cell_row_start_num = str(8+i*6)
-                cell_row_end_num = str(12+i*6)
+                title_row_num = str(7 + i * 6)
+                cell_row_start_num = str(8 + i * 6)
+                cell_row_end_num = str(12 + i * 6)
                 
-                worksheet.write('F'+title_row_num, 'After clearing process', grey_title_format)
-                worksheet.merge_range('F'+cell_row_start_num+':F'+cell_row_end_num,
+                worksheet.write('F' + title_row_num, 'After clearing process', grey_title_format)
+                worksheet.merge_range('F' + cell_row_start_num + ':F' + cell_row_end_num,
                                       get_memory_info_time, default_cell_format)
                  
-                worksheet.write('G'+title_row_num, 'Top 5 Process', grey_title_format)
-                worksheet.write('H'+title_row_num, 'Memory Usage (MB)', grey_title_format)
+                worksheet.write('G' + title_row_num, 'Top 5 Process', grey_title_format)
+                worksheet.write('H' + title_row_num, 'Memory Usage (MB)', grey_title_format)
                 
                 for a in range(8, 17, 2):
                     b = int(a/2-4)
                     process_name = file[a].strip().split(': ')[1]
                     process_mem_usage = file[a].strip().split('kB: ')[0]
                     process_mem_usage = float(int(process_mem_usage)/1000)
-                    process_cell_row_num = str(8+b+i*6)
+                    process_cell_row_num = str(8 + b + i * 6)
                     
                     worksheet.write('G' + process_cell_row_num, process_name, process_name_cell_format)
                     worksheet.write('H' + process_cell_row_num, process_mem_usage, num_cell_format)
@@ -221,4 +221,5 @@ def resultMaker(save_path):
 
     workbook.close()
     print(time.ctime()+"~~ '" + result_name + "' saved.")
-# resultMaker('..\\Result\\2017.06.26_16-35-58\\')
+
+# resultMaker('..\\Result\\2017.06.28_18-26-19\\')

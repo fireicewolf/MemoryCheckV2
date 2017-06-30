@@ -1,6 +1,8 @@
 # coding=utf-8
 
 import re
+import time
+
 from .command_line import commandLine
 
 
@@ -81,3 +83,24 @@ def deviceScreenWidth(device_id):
 def deviceScreenHeight(device_id):
     deviceScreenHeight = deviceScreenResolution(device_id)[1]
     return int(deviceScreenHeight)
+
+
+def isScreenOn(device_id):
+    checkIsScreenOn = commandLine('adb -s ' + device_id +
+                                  ' shell "dumpsys window policy | grep mScreenOnFully"').stdout.read().strip()
+    if "mScreenOnEarly=true mScreenOnFully=true" in str(checkIsScreenOn):
+        return True
+    elif "mScreenOnEarly=false mScreenOnFully=false" in str(checkIsScreenOn):
+        return False
+    else:
+        print(time.ctime() + "~~ Device " + device_id + ':Get screen statues failed.')
+
+
+def screenOn(device_id):
+    if not isScreenOn(device_id):
+        commandLine("adb -s " + device_id + " shell input keyevent KEYCODE_POWER").wait(10)
+
+
+def screenOff(device_id):
+    if isScreenOn(device_id):
+        commandLine("adb -s " + device_id + " shell input keyevent KEYCODE_POWER").wait(10)
