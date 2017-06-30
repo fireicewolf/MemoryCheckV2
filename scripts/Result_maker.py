@@ -222,4 +222,4 @@ def resultMaker(save_path):
     workbook.close()
     print(time.ctime()+"~~ '" + result_name + "' saved.")
 
-# resultMaker('..\\Result\\2017.06.28_18-26-19\\')
+# resultMaker('..\\Result\\2017.06.30_17-16-13\\')

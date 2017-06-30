@@ -164,15 +164,15 @@ def sequenceMonkeyTest(create_dir_time, device_id, test_package_names, running_t
     except:
         print(time.ctime()+"~~ Device "+device_id+': Connection timeout after 90s, test will not execute.')
 
-    time.sleep(30)
     print(time.ctime()+"~~ Device "+device_id+': Waiting 30s before device being stable.')
+    time.sleep(30)
 
     if adbstatus(device_id) == "device":
         save_memory_info_cmd = 'adb -s ' + device_id + ' shell dumpsys meminfo > '
 
         print(time.ctime() + "~~ Device " + device_id +
               ': Connection successful, waiting 10 minutes before catching memory info')
-        time.sleep(600)
+        # time.sleep(600)
 
         print(time.ctime() + "~~ Device " + device_id + ': Catching memory info before test.')
         commandLine(save_memory_info_cmd + saveMemInfoBeforeTest(create_dir_time, device_id)).wait(10)
@@ -228,7 +228,7 @@ def sequenceMonkeyTest(create_dir_time, device_id, test_package_names, running_t
 
         print(time.ctime() + "~~ Device " + device_id +
               ': Connection successful, wait for 10 minutes before catching memory info')
-        time.sleep(600)
+        # time.sleep(600)
 
         print(time.ctime() + "~~ Device " + device_id + ': Catching memory info after whole test finished.')
         commandLine(save_memory_info_cmd + saveMemInfoAfterWholeTest(create_dir_time, device_id)).wait(10)
