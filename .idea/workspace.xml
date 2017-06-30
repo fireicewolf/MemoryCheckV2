@@ -3,13 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="21a0765f-4f58-4ae3-ad01-230b8718c501" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main_test.py" afterPath="$PROJECT_DIR$/Main_test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Run Test.bat" afterPath="$PROJECT_DIR$/Run Test.bat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monkey_test_config.ini" afterPath="$PROJECT_DIR$/monkey_test_config.ini" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/Result_maker.py" afterPath="$PROJECT_DIR$/scripts/Result_maker.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/device_info.py" afterPath="$PROJECT_DIR$/scripts/device_info.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/monkey_test.py" afterPath="$PROJECT_DIR$/scripts/monkey_test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/save_files.py" afterPath="$PROJECT_DIR$/scripts/save_files.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -54,8 +48,8 @@
       <file leaf-file-name="monkey_test.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/monkey_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-91">
-              <caret line="173" column="86" lean-forward="false" selection-start-line="173" selection-start-column="86" selection-end-line="173" selection-end-column="86" />
+            <state relative-caret-position="703">
+              <caret line="236" column="27" lean-forward="false" selection-start-line="236" selection-start-column="27" selection-end-line="236" selection-end-column="27" />
               <folding>
                 <element signature="e#14#25#0" expanded="true" />
               </folding>
@@ -526,7 +520,14 @@
       <option name="project" value="LOCAL" />
       <updated>1498526245350</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Codes update">
+      <created>1498814917380</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1498814917380</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView">
@@ -959,8 +960,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/monkey_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-91">
-          <caret line="173" column="86" lean-forward="false" selection-start-line="173" selection-start-column="86" selection-end-line="173" selection-end-column="86" />
+        <state relative-caret-position="703">
+          <caret line="236" column="27" lean-forward="false" selection-start-line="236" selection-start-column="27" selection-end-line="236" selection-end-column="27" />
           <folding>
             <element signature="e#14#25#0" expanded="true" />
           </folding>
