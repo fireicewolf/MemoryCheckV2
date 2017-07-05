@@ -10,6 +10,7 @@ from scripts.monkey_test import getAppPackageName
 from scripts.monkey_test import randomMonkeyTest
 from scripts.monkey_test import sequenceMonkeyTest
 from scripts.Result_maker import resultMaker
+from scripts.Result_maker_new import resultMakerNew
  
 config = configparser.ConfigParser()
 config.read_file(open('monkey_test_config.ini'), 'r')
@@ -64,7 +65,7 @@ for device in deviceList():
                                                                screen_off_time))
         threads.append(t1)
 
-resultThread = threading.Thread(target=resultMaker, args=(createResultDir(create_dir_time),))
+resultThread = threading.Thread(target=resultMakerNew, args=(createResultDir(create_dir_time),))
 
 if __name__ == '__main__':
     for t in threads:

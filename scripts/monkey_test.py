@@ -62,17 +62,19 @@ def killMonkeyTestProcess(device_id):
 def killBackgroundProcess(device_id):
     screenWidth = deviceScreenWidth(device_id)
     screenHeight = deviceScreenHeight(device_id)
+    tap_app_switch = 'adb -s ' + device_id + ' shell input keyevent KEYCODE_APP_SWITCH'
 
     if model(device_id) == 'W909':
-        kill_all_background_apps_cmd = 'adb -s ' + device_id \
-                                       + ' shell input keyevent KEYCODE_APP_SWITCH; input tap 360 1115'
+        kill_all_background_apps_cmd = 'adb -s ' + device_id + ' shell input tap 360 1115'
     else:
-        kill_all_background_apps_cmd = 'adb -s ' + device_id \
-                                       + ' shell input keyevent KEYCODE_APP_SWITCH; input tap ' \
-                                       + str(int(540 / 1080 * screenWidth)) + ' ' + str(int(1580 / 1920 * screenHeight))
+        kill_all_background_apps_cmd = 'adb -s ' + device_id + ' shell input tap ' + str(int(540 / 1080 * screenWidth))\
+                                       + ' ' + str(int(1580 / 1920 * screenHeight))
 
     print(time.ctime() + "~~ Device " + device_id + ': Killing background processes.')
-    commandLine(kill_all_background_apps_cmd).wait(30)
+    commandLine(tap_app_switch).wait(10)
+    time.sleep(2)
+    commandLine(kill_all_background_apps_cmd).wait(10)
+
 
 
 #Definition for result save
@@ -172,7 +174,7 @@ def sequenceMonkeyTest(create_dir_time, device_id, test_package_names, running_t
 
         print(time.ctime() + "~~ Device " + device_id +
               ': Connection successful, waiting 10 minutes before catching memory info')
-        # time.sleep(600)
+        time.sleep(600)
 
         print(time.ctime() + "~~ Device " + device_id + ': Catching memory info before test.')
         commandLine(save_memory_info_cmd + saveMemInfoBeforeTest(create_dir_time, device_id)).wait(10)
@@ -228,7 +230,7 @@ def sequenceMonkeyTest(create_dir_time, device_id, test_package_names, running_t
 
         print(time.ctime() + "~~ Device " + device_id +
               ': Connection successful, wait for 10 minutes before catching memory info')
-        # time.sleep(600)
+        time.sleep(600)
 
         print(time.ctime() + "~~ Device " + device_id + ': Catching memory info after whole test finished.')
         commandLine(save_memory_info_cmd + saveMemInfoAfterWholeTest(create_dir_time, device_id)).wait(10)
