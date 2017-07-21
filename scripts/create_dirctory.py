@@ -52,7 +52,7 @@ def createdumpsysLogsDir(create_time, device_id):
 
 
 # Definition for the save place of package names list
-def createpackageListDir(create_time, device_id):
+def createPackageListDir(create_time, device_id):
     package_list_path = createResultDir(create_time)
     package_list_path_is_exists = os.path.exists(package_list_path)
     if not package_list_path_is_exists:
@@ -62,3 +62,16 @@ def createpackageListDir(create_time, device_id):
     if not package_list_dir_is_exists:
         os.makedirs(package_list_dir)
     return package_list_dir + os.path.sep
+
+
+# Definition for the save place of screenshots
+def createScreenshotDir(create_time, device_id):
+    screenshots_path = createResultDir(create_time)
+    screenshots_path_is_exists = os.path.exists(screenshots_path)
+    if not screenshots_path_is_exists:
+        os.makedirs(screenshots_path)
+    screenshots_dir = screenshots_path + os.path.sep + "screenshots" + os.path.sep + deviceDirName(device_id)
+    screenshots_dir_is_exists = os.path.exists(screenshots_dir)
+    if not screenshots_dir_is_exists:
+        os.makedirs(screenshots_dir)
+    return screenshots_dir + os.path.sep

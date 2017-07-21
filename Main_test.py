@@ -1,17 +1,16 @@
 #coding=utf-8
 
+import configparser
 import threading
 import time
-import configparser
 
+from scripts.Result_maker_new import resultMakerNew
 from scripts.create_dirctory import createResultDir
 from scripts.device_info import deviceList
 from scripts.monkey_test import getAppPackageName
 from scripts.monkey_test import randomMonkeyTest
 from scripts.monkey_test import sequenceMonkeyTest
-from scripts.Result_maker import resultMaker
-from scripts.Result_maker_new import resultMakerNew
- 
+
 config = configparser.ConfigParser()
 config.read_file(open('monkey_test_config.ini'), 'r')
 running_time = int(config.get('config', 'Test Time(min)'))
@@ -27,6 +26,7 @@ create_dir_time = time.strftime('%Y.%m.%d_%H-%M-%S', time.localtime())
 print(time.ctime() + "~~ : Test result will save in " + createResultDir(create_dir_time) + ".")
  
 threads = []
+
 
 for device in deviceList():
     device_id = str(device)

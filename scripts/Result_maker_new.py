@@ -7,9 +7,11 @@ import xlsxwriter
 
 def resultMakerNew(save_path):
     global free_ram_after_cleaning_processes, used_ram_after_cleaning_processes, \
-        free_ram_before_cleaning_processes, used_ram_before_cleaning_processes
+        free_ram_before_cleaning_processes, used_ram_before_cleaning_processes, \
+        total_ram_before_test, used_ram_before_test, free_ram_before_test, \
+        used_ram_after_whole_test, total_ram_after_whole_test, free_ram_after_whole_test
     memory_info_dir = save_path + 'dumpsys_logs'
-    result_name = save_path + "Test Result.xlsx"
+    result_name = save_path + "Test Result_" + time.strftime('%Y.%m.%d_%H-%M-%S', time.localtime()) + ".xlsx"
 
     print(time.ctime()+"~~ Saving test result: " + result_name)
 
@@ -109,10 +111,10 @@ def resultMakerNew(save_path):
                         worksheet.write('C5', 'Used RAM (MB)', light_blue_format)
                         worksheet.write('C6', 'Free RAM (MB)', light_blue_format)
 
-                        worksheet.write('D3', get_memory_info_time, default_cell_format)
-                        worksheet.write('D4', total_ram_before_test, default_cell_format)
-                        worksheet.write('D5', used_ram_before_test, default_cell_format)
-                        worksheet.write('D6', free_ram_before_test, default_cell_format)
+                        worksheet.write('D3', get_memory_info_time, num_cell_format)
+                        worksheet.write('D4', total_ram_before_test, num_cell_format)
+                        worksheet.write('D5', used_ram_before_test, num_cell_format)
+                        worksheet.write('D6', free_ram_before_test, num_cell_format)
 
                     if result_file_name.startswith('meminfo_after_whole_test_'):
                         get_memory_info_time = result_file_name.strip('meminfo_after_whole_test_|.txt')
@@ -126,15 +128,15 @@ def resultMakerNew(save_path):
                             if "Total RAM:" in line:
                                 line = line.strip('Total RAM: ')
                                 line = line.split('kB')
-                                total_ram_before_test = float(int(line[0]) / 1000)
+                                total_ram_after_whole_test = float(int(line[0]) / 1000)
                             if "Free RAM:" in line:
                                 line = line.strip('Free RAM: ')
                                 line = line.split('kB')
-                                free_ram_before_test = float(int(line[0]) / 1000)
+                                free_ram_after_whole_test = float(int(line[0]) / 1000)
                             if "Used RAM:" in line:
                                 line = line.strip('Used RAM: ')
                                 line = line.split('kB')
-                                used_ram_before_test = float(int(line[0]) / 1000)
+                                used_ram_after_whole_test = float(int(line[0]) / 1000)
 
                         worksheet.merge_range('E2:F2', 'Memory Info After Test (After Reboot)', yellow_title_format)
                         worksheet.write('E3', 'Test Time', light_blue_format)
@@ -143,9 +145,9 @@ def resultMakerNew(save_path):
                         worksheet.write('E6', 'Free RAM (MB)', light_blue_format)
 
                         worksheet.write('F3', get_memory_info_time, default_cell_format)
-                        worksheet.write('F4', total_ram_before_test, default_cell_format)
-                        worksheet.write('F5', used_ram_before_test, default_cell_format)
-                        worksheet.write('F6', free_ram_before_test, default_cell_format)
+                        worksheet.write('F4', total_ram_after_whole_test, default_cell_format)
+                        worksheet.write('F5', used_ram_after_whole_test, default_cell_format)
+                        worksheet.write('F6', free_ram_after_whole_test, default_cell_format)
 
                     if result_file_name.startswith('meminfo_before_clear_process_'):
                         memory_info_before_clear_process_list.append(result_file_name)
@@ -254,11 +256,13 @@ def resultMakerNew(save_path):
                 worksheet.merge_range('E'+str(start_cell_row_num+4)+':F'+str(start_cell_row_num+15),
                                       '', light_grey_format)
                 worksheet.write('F' + str(start_cell_row_num + 2),
-                                '=B' + str(start_cell_row_num + 2) + '-D' + str(start_cell_row_num + 2), num_cell_format)
+                                '=B' + str(start_cell_row_num + 2) + '-D' + str(start_cell_row_num + 2),
+                                num_cell_format)
                 worksheet.write('F' + str(start_cell_row_num + 3),
-                                '=D' + str(start_cell_row_num + 3) + '-B' + str(start_cell_row_num + 3), num_cell_format)
+                                '=D' + str(start_cell_row_num + 3) + '-B' + str(start_cell_row_num + 3),
+                                num_cell_format)
 
     workbook.close()
     print(time.ctime()+"~~ '" + result_name + "' saved.")
 
-# resultMakerNew('..\\Result\\2017.07.04_17-14-30\\')
+resultMakerNew('..\\Result\\2017.07.18_13-13-46\\')

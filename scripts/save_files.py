@@ -1,8 +1,7 @@
 # coding=utf-8
 import time
 
-from .create_dirctory import createadbLogsDir
-from .create_dirctory import createdumpsysLogsDir
+from .create_dirctory import createadbLogsDir, createdumpsysLogsDir, createScreenshotDir
 
 
 def saveAdbLog(testPackage=None, create_time=None, device_id=None):
@@ -38,3 +37,9 @@ def saveMemInfoAfterWholeTest(create_time, device_id):
     save_mem_info_after_whole_test = dumpsyslogsdir + 'meminfo_after_whole_test_' + time.strftime(
         '%Y.%m.%d_%H-%M-%S', time.localtime()) + '.txt'
     return save_mem_info_after_whole_test
+
+
+def saveScreenshots(create_time, device_id):
+    dumpsyslogsdir = createScreenshotDir(create_time, device_id)
+    save_screenshot = dumpsyslogsdir + 'screenshot_' + time.strftime('%Y.%m.%d_%H-%M-%S', time.localtime()) + '.png'
+    return save_screenshot
