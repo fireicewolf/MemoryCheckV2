@@ -9,7 +9,7 @@ from .create_dirctory import createPackageListDir
 from .device_info import adbstatus, model
 
 from .save_files import saveAdbLog, saveMemInfoBeforeTest, saveMemInfo, saveMemInfoAfterClearProcess, \
-    saveMemInfoAfterWholeTest, saveScreenshots
+    saveDumpsysAfterWholeTest, saveScreenshots
 from .device_info import deviceScreenWidth, deviceScreenHeight, screenOn, screenOff
 
 
@@ -185,6 +185,7 @@ def sequenceMonkeyTest(create_dir_time, device_id, test_package_names, running_t
 
     if adbstatus(device_id) == "device":
         save_memory_info_cmd = 'adb -s ' + device_id + ' shell dumpsys meminfo > '
+        save_dumpsys_cmd = 'adb -s ' + device_id + ' shell dumpsys > '
 
         print(time.ctime() + "~~ Device " + device_id +
               ': Connection successful, waiting 10 minutes before catching memory info')
@@ -198,8 +199,8 @@ def sequenceMonkeyTest(create_dir_time, device_id, test_package_names, running_t
         print(time.ctime() + "~~ Device " + device_id + ': Starting monkey test.')
 
         for i in range(len(test_package_names)):
-            testPackage = test_package_names.pop(0)
-            print(time.ctime() + "~~ Device " + device_id + ': Start testing app: "' + str(testPackage) + '".')
+            testPackage = test_package_names[i]
+            print(time.ctime() + "~~ Device " + device_id + ': App: "' + str(testPackage) + '" test start.')
             monkey_cmd = 'adb -s ' + device_id + ' shell monkey -p ' + str(testPackage) + \
                          ' --throttle ' + str(event_interval) + ' --ignore-crashes --ignore-security-exceptions ' \
                                                                 '--ignore-timeouts --monitor-native-crashes -v -v -v ' \
@@ -224,8 +225,6 @@ def sequenceMonkeyTest(create_dir_time, device_id, test_package_names, running_t
         killMonkeyTestProcess(device_id)
         time.sleep(60)
 
-        save_memory_info_cmd = 'adb -s ' + device_id + ' shell dumpsys meminfo > '
-
         print(time.ctime() + "~~ Device " + device_id + ': Catching memory info.')
         commandLine(save_memory_info_cmd + saveMemInfo(create_dir_time, device_id)).wait(30)
 
@@ -234,32 +233,36 @@ def sequenceMonkeyTest(create_dir_time, device_id, test_package_names, running_t
 
         print(time.ctime() + "~~ Device " + device_id + ': Checking background process')
         commandLine(tap_app_switch).wait(10)
-        time.sleep(2)
+        time.sleep(30)
         commandLine(takeScreenshot_cmd).wait(10)
         commandLine('adb -s ' + device_id + ' pull /sdcard/test.png ' +
                     saveScreenshots(create_dir_time, device_id)).wait(10)
         commandLine('adb -s ' + device_id + ' shell input keyevent KEYCODE_HOME').wait(10)
 
+        time.sleep(60)
         print(time.ctime() + "~~ Device " + device_id + ': Catching memory info after clear processes.')
         commandLine(save_memory_info_cmd + saveMemInfoAfterClearProcess(create_dir_time, device_id)).wait(10)
 
-        print(time.ctime() + "~~ Device " + device_id + ': Rebooting, please wait.')
-        commandLine('adb -s ' + device_id + ' reboot').wait(10)
+        print(time.ctime() + "~~ Device " + device_id + ': Catching dumpsys info.')
+        commandLine(save_dumpsys_cmd + saveDumpsysAfterWholeTest(create_dir_time, device_id)).wait(30)
 
-        try:
-            commandLine('adb -s ' + device_id + ' wait-for-device').wait(90)
-        except:
-            print(time.ctime() + "~~ Device " + device_id + ': Connecting timeout after 90s, test will not execute.')
-
-        print(time.ctime() + "~~ Device " + device_id + ': Wait 30s before device being stable.')
-        time.sleep(30)
-
-        print(time.ctime() + "~~ Device " + device_id +
-              ': Connection successful, wait for 10 minutes before catching memory info')
-        time.sleep(600)
-
-        print(time.ctime() + "~~ Device " + device_id + ': Catching memory info after whole test finished.')
-        commandLine(save_memory_info_cmd + saveMemInfoAfterWholeTest(create_dir_time, device_id)).wait(10)
+        # print(time.ctime() + "~~ Device " + device_id + ': Rebooting, please wait.')
+        # commandLine('adb -s ' + device_id + ' reboot').wait(10)
+        #
+        # try:
+        #     commandLine('adb -s ' + device_id + ' wait-for-device').wait(90)
+        # except:
+        #     print(time.ctime() + "~~ Device " + device_id + ': Connecting timeout after 90s, test will not execute.')
+        #
+        # print(time.ctime() + "~~ Device " + device_id + ': Wait 30s before device being stable.')
+        # time.sleep(30)
+        #
+        # print(time.ctime() + "~~ Device " + device_id +
+        #       ': Connection successful, wait for 10 minutes before catching memory info')
+        # time.sleep(600)
+        #
+        # print(time.ctime() + "~~ Device " + device_id + ': Catching memory info after whole test finished.')
+        # commandLine(save_memory_info_cmd + saveMemInfoAfterWholeTest(create_dir_time, device_id)).wait(10)
 
     else:
         print(time.ctime() + "~~ Device " + device_id + ': Connection failed, please check and fix this.')

@@ -32,9 +32,9 @@ def saveMemInfoAfterClearProcess(create_time, device_id):
     return save_mem_info_after_clear_process
 
 
-def saveMemInfoAfterWholeTest(create_time, device_id):
+def saveDumpsysAfterWholeTest(create_time, device_id):
     dumpsyslogsdir = createdumpsysLogsDir(create_time, device_id)
-    save_mem_info_after_whole_test = dumpsyslogsdir + 'meminfo_after_whole_test_' + time.strftime(
+    save_mem_info_after_whole_test = dumpsyslogsdir + 'dumpsys_after_whole_test_' + time.strftime(
         '%Y.%m.%d_%H-%M-%S', time.localtime()) + '.txt'
     return save_mem_info_after_whole_test
 

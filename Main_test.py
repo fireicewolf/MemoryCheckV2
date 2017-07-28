@@ -6,29 +6,31 @@ import time
 
 from scripts.Result_maker_new import resultMakerNew
 from scripts.create_dirctory import createResultDir
-from scripts.device_info import deviceList
 from scripts.monkey_test import getAppPackageName
 from scripts.monkey_test import randomMonkeyTest
 from scripts.monkey_test import sequenceMonkeyTest
 
 config = configparser.ConfigParser()
 config.read_file(open('monkey_test_config.ini'), 'r')
+device_list = str(config.get('config', 'Device for test')).split(",")
 running_time = int(config.get('config', 'Test Time(min)'))
 catch_log_interval = int(config.get('config', 'Catch log interval(min)'))
-random_package_test = str(config.get('config', 'Random package test'))
+random_package_test = str(config.get('config', 'Remix test packages'))
 event_interval = int(config.get('config', 'Event interval'))
 event_count = int(config.get('config', 'Event count'))
 def_test_package = str(config.get('config', 'Test Packages'))
+blind_packages = str(config.get('config', 'Blind Packages'))
 is_screen_off = str(config.get('config', 'Screen off'))
 screen_off_time = '%.2f' % float(config.get('config', 'Screen off time'))
- 
+
+# create_dir_time = '2017.07.25_18-07-11'
 create_dir_time = time.strftime('%Y.%m.%d_%H-%M-%S', time.localtime())
 print(time.ctime() + "~~ : Test result will save in " + createResultDir(create_dir_time) + ".")
  
 threads = []
 
 
-for device in deviceList():
+for device in device_list:
     device_id = str(device)
     
     if def_test_package == '':
@@ -54,6 +56,17 @@ for device in deviceList():
         else:
             test_package_names = packages
 
+    blind_packages_list = blind_packages.split(",")
+    for i in range(len(blind_packages_list)):
+        try:
+            test_package_names.remove(blind_packages_list[i])
+            print(time.ctime() + "~~ Device " + device_id + ':Found packages ' + str(blind_packages_list[i])
+                  + ', it will not be tested.')
+        except:
+            pass
+
+    print(time.ctime() + "~~ Device " + device_id + ':Total ' + str(len(test_package_names)) + ' apps will be tested.')
+
     if random_package_test == 'yes':
         t1 = threading.Thread(target=randomMonkeyTest, args=(create_dir_time, device_id, test_package_names,
                                                              event_interval, event_count, running_time,
@@ -65,7 +78,8 @@ for device in deviceList():
                                                                screen_off_time))
         threads.append(t1)
 
-resultThread = threading.Thread(target=resultMakerNew, args=(createResultDir(create_dir_time),))
+resultThread = threading.Thread(target=resultMakerNew, args=(createResultDir(create_dir_time), random_package_test,
+                                                             running_time, event_interval, event_count))
 
 if __name__ == '__main__':
     for t in threads:
