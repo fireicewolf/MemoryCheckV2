@@ -93,7 +93,7 @@ def isScreenOn(device_id):
     elif "mScreenOnEarly=false mScreenOnFully=false" in str(checkIsScreenOn):
         return False
     else:
-        print(time.ctime() + "~~ Device " + device_id + ':Get screen statues failed.')
+        print(time.ctime() + "~~ Device " + device_id + ': Get screen statues failed.')
 
 
 def screenOn(device_id):

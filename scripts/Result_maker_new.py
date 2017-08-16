@@ -3,6 +3,9 @@
 import os
 import time
 import xlsxwriter
+from .device_info import manufacturer
+from .device_info import model
+from .device_info import buildVersion
 
 
 def resultMakerNew(save_path, remix_test_packages, monkey_test_time, monkey_event_interval, monkey_event_count):
@@ -55,14 +58,12 @@ def resultMakerNew(save_path, remix_test_packages, monkey_test_time, monkey_even
 
     for dirpath, dir_names, file_names in os.walk(memory_info_dir):
         for dir_name in dir_names:
-            get_name = dir_name.split("__")
+            device_id = dir_name
+            this_manufacturer = manufacturer(device_id)
+            this_model = model(device_id)
+            this_build_version  = buildVersion(device_id)
 
-            manufacturer = get_name[0]
-            model = get_name[1]
-            device_id = get_name[2]
-            build_version = get_name[3]
-
-            worksheet = workbook.add_worksheet(model + ' ' + device_id)
+            worksheet = workbook.add_worksheet(this_model + ' ' + device_id)
 
             worksheet.merge_range('A1:F1', 'Memory Usage Test', big_blue_title_format)
 
@@ -72,10 +73,10 @@ def resultMakerNew(save_path, remix_test_packages, monkey_test_time, monkey_even
             worksheet.write('A5', 'Device', light_blue_format)
             worksheet.write('A6', 'Build Version', light_blue_format)
 
-            worksheet.write('B3', manufacturer, default_cell_format)
-            worksheet.write('B4', model, default_cell_format)
+            worksheet.write('B3', this_manufacturer, default_cell_format)
+            worksheet.write('B4', this_model, default_cell_format)
             worksheet.write('B5', device_id, default_cell_format)
-            worksheet.write('B6', build_version, default_cell_format)
+            worksheet.write('B6', this_build_version, default_cell_format)
 
             worksheet.merge_range('C2:D2', 'Test Config', yellow_title_format)
             worksheet.write('C3', 'Remix Test Packages', light_blue_format)
@@ -107,16 +108,16 @@ def resultMakerNew(save_path, remix_test_packages, monkey_test_time, monkey_even
                         for line in file:
                             if "Total RAM:" in line:
                                 line = line.strip('Total RAM: ')
-                                line = line.split('kB')
-                                total_ram_before_test = float(int(line[0]) / 1000)
+                                line = line.split('K')
+                                total_ram_before_test = float(int(line[0].replace(',', '')) / 1000)
                             if "Free RAM:" in line:
                                 line = line.strip('Free RAM: ')
-                                line = line.split('kB')
-                                free_ram_before_test = float(int(line[0]) / 1000)
+                                line = line.split('K')
+                                free_ram_before_test = float(int(line[0].replace(',', '')) / 1000)
                             if "Used RAM:" in line:
                                 line = line.strip('Used RAM: ')
-                                line = line.split('kB')
-                                used_ram_before_test = float(int(line[0]) / 1000)
+                                line = line.split('K')
+                                used_ram_before_test = float(int(line[0].replace(',', '')) / 1000)
 
                         worksheet.merge_range('E2:F2', 'Memory Info Before Test (After Reboot)', yellow_title_format)
                         worksheet.write('E3', 'Test Time', light_blue_format)
@@ -128,40 +129,6 @@ def resultMakerNew(save_path, remix_test_packages, monkey_test_time, monkey_even
                         worksheet.write('F4', total_ram_before_test, num_cell_format)
                         worksheet.write('F5', used_ram_before_test, num_cell_format)
                         worksheet.write('F6', free_ram_before_test, num_cell_format)
-
-                    # if result_file_name.startswith('meminfo_after_whole_test_'):
-                    #     get_memory_info_time = result_file_name.strip('meminfo_after_whole_test_|.txt')
-                    #     get_memory_info_time = get_memory_info_time.replace('_', ' ')
-                    #     get_memory_info_time = get_memory_info_time.replace('-', ':')
-                    #
-                    #     with open(memory_info_dir + os.path.sep + dir_name + os.path.sep + result_file_name, 'r')
-                    # as f:
-                    #         file = f.readlines()
-                    #
-                    #     for line in file:
-                    #         if "Total RAM:" in line:
-                    #             line = line.strip('Total RAM: ')
-                    #             line = line.split('kB')
-                    #             total_ram_after_whole_test = float(int(line[0]) / 1000)
-                    #         if "Free RAM:" in line:
-                    #             line = line.strip('Free RAM: ')
-                    #             line = line.split('kB')
-                    #             free_ram_after_whole_test = float(int(line[0]) / 1000)
-                    #         if "Used RAM:" in line:
-                    #             line = line.strip('Used RAM: ')
-                    #             line = line.split('kB')
-                    #             used_ram_after_whole_test = float(int(line[0]) / 1000)
-                    #
-                    #     worksheet.merge_range('E2:F2', 'Memory Info After Test (After Reboot)', yellow_title_format)
-                    #     worksheet.write('E3', 'Test Time', light_blue_format)
-                    #     worksheet.write('E4', 'Total RAM (MB)', light_blue_format)
-                    #     worksheet.write('E5', 'Used RAM (MB)', light_blue_format)
-                    #     worksheet.write('E6', 'Free RAM (MB)', light_blue_format)
-                    #
-                    #     worksheet.write('F3', get_memory_info_time, default_cell_format)
-                    #     worksheet.write('F4', total_ram_after_whole_test, default_cell_format)
-                    #     worksheet.write('F5', used_ram_after_whole_test, default_cell_format)
-                    #     worksheet.write('F6', free_ram_after_whole_test, default_cell_format)
 
                     if result_file_name.startswith('meminfo_before_clear_process_'):
                         memory_info_before_clear_process_list.append(result_file_name)
@@ -195,12 +162,12 @@ def resultMakerNew(save_path, remix_test_packages, monkey_test_time, monkey_even
                 for line in file:
                     if "Free RAM:" in line:
                         line = line.strip('Free RAM (MB): ')
-                        line = line.split('kB')
-                        free_ram_before_cleaning_processes = float(int(line[0]) / 1000)
+                        line = line.split('K')
+                        free_ram_before_cleaning_processes = float(int(line[0].replace(',', '')) / 1000)
                     if "Used RAM:" in line:
                         line = line.strip('Used RAM (MB): ')
-                        line = line.split('kB')
-                        used_ram_before_cleaning_processes = float(int(line[0]) / 1000)
+                        line = line.split('K')
+                        used_ram_before_cleaning_processes = float(int(line[0].replace(',', '')) / 1000)
 
                 worksheet.write('B' + str(round_row_num + 2), get_memory_info_time, default_cell_format)
                 worksheet.write('B' + str(round_row_num + 3), used_ram_before_cleaning_processes, num_cell_format)
@@ -208,8 +175,8 @@ def resultMakerNew(save_path, remix_test_packages, monkey_test_time, monkey_even
 
                 for a in range(8, 27, 2):
                     b = int(a / 2 - 4)
-                    process_name = file[a].strip().split('kB: ')[1]
-                    process_mem_usage = file[a].strip().split('kB: ')[0]
+                    process_name = file[a].strip().split('K: ')[1]
+                    process_mem_usage = file[a].strip().split('K: ')[0].replace(',', '')
                     process_mem_usage = float(int(process_mem_usage) / 1000)
                     process_cell_row_num = str(15 + b + i * 17)
 
@@ -240,12 +207,12 @@ def resultMakerNew(save_path, remix_test_packages, monkey_test_time, monkey_even
                 for line in file:
                     if "Free RAM:" in line:
                         line = line.strip('Free RAM (MB): ')
-                        line = line.split('kB')
-                        free_ram_after_cleaning_processes = float(int(line[0]) / 1000)
+                        line = line.split('K')
+                        free_ram_after_cleaning_processes = float(int(line[0].replace(',', '')) / 1000)
                     if "Used RAM:" in line:
                         line = line.strip('Used RAM (MB): ')
-                        line = line.split('kB')
-                        used_ram_after_cleaning_processes = float(int(line[0]) / 1000)
+                        line = line.split('K')
+                        used_ram_after_cleaning_processes = float(int(line[0].replace(',', '')) / 1000)
 
                 worksheet.write('D' + str(round_row_num + 2), get_memory_info_time, default_cell_format)
                 worksheet.write('D' + str(round_row_num + 3), used_ram_after_cleaning_processes, num_cell_format)
@@ -253,8 +220,8 @@ def resultMakerNew(save_path, remix_test_packages, monkey_test_time, monkey_even
 
                 for a in range(8, 27, 2):
                     b = int(a / 2 - 4)
-                    process_name = file[a].strip().split('kB: ')[1]
-                    process_mem_usage = file[a].strip().split('kB: ')[0]
+                    process_name = file[a].strip().split('K: ')[1]
+                    process_mem_usage = file[a].strip().split('K: ')[0].replace(',', '')
                     process_mem_usage = float(int(process_mem_usage) / 1000)
                     process_cell_row_num = str(15 + b + i * 17)
 
@@ -278,5 +245,3 @@ def resultMakerNew(save_path, remix_test_packages, monkey_test_time, monkey_even
 
     workbook.close()
     print(time.ctime() + "~~ '" + result_name + "' saved.")
-
-# resultMakerNew('..\\Result\\2017.07.25_18-07-11\\')

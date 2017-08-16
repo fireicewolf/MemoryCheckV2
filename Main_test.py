@@ -4,6 +4,8 @@ import configparser
 import threading
 import time
 
+import os
+
 from scripts.Result_maker_new import resultMakerNew
 from scripts.create_dirctory import createResultDir
 from scripts.monkey_test import getAppPackageName
@@ -23,18 +25,21 @@ blind_packages = str(config.get('config', 'Blind Packages'))
 is_screen_off = str(config.get('config', 'Screen off'))
 screen_off_time = '%.2f' % float(config.get('config', 'Screen off time'))
 
-# create_dir_time = '2017.07.25_18-07-11'
+# create_dir_time = '2017.08.12_17-36-34'
 create_dir_time = time.strftime('%Y.%m.%d_%H-%M-%S', time.localtime())
 print(time.ctime() + "~~ : Test result will save in " + createResultDir(create_dir_time) + ".")
  
 threads = []
 
-
 for device in device_list:
     device_id = str(device)
     
     if def_test_package == '':
-        packages = getAppPackageName(create_dir_time, device_id)
+        # packages = getAppPackageName(create_dir_time, device_id)
+        packages = open(os.path.join(".", "packages_visual.txt"), 'r')
+        packages = packages.read().split('\n')
+        print(time.ctime() + "~~ Device " + device_id + ':App lists load successfully, total ' +
+              str(len(packages)) + ' apps.')
         if random_package_test == 'yes':
             test_package_names = ''
             for line in packages:

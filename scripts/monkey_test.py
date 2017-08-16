@@ -2,6 +2,8 @@
 import time
 from datetime import datetime
 
+import os
+
 from .command_line import commandLine
 
 from .create_dirctory import createPackageListDir
@@ -15,21 +17,19 @@ from .device_info import deviceScreenWidth, deviceScreenHeight, screenOn, screen
 
 def getAppPackageName(create_time, device_id):
     install_view_apk_cmd = 'adb -s ' + device_id + ' install -r package_name_viewer.apk'
-    commandLine(install_view_apk_cmd).wait(10)
+    commandLine(install_view_apk_cmd).wait()
 
     launch_view_apk_cmd = 'adb -s ' + device_id +\
                           ' shell am start -n com.gionee.packages/com.gionee.packages.MainActivity'
-    commandLine(launch_view_apk_cmd).wait(10)
+    commandLine(launch_view_apk_cmd).wait()
 
     save_list_to_pc_cmd = 'adb -s ' + device_id + ' pull /sdcard/packages_visual.txt ' + \
                           createPackageListDir(create_time, device_id) + 'packages_names_list.txt'
-    commandLine(save_list_to_pc_cmd).wait(10)
+    print(save_list_to_pc_cmd)
+    commandLine(save_list_to_pc_cmd).wait()
 
     uninstall_view_apk_cmd = 'adb -s ' + device_id + ' uninstall com.gionee.packages'
-    commandLine(uninstall_view_apk_cmd).wait(10)
-
-    remove_list_in_phone_cmd = 'adb -s ' + device_id + ' shell rm /sdcard/packages_visual.txt'
-    commandLine(remove_list_in_phone_cmd).wait(10)
+    commandLine(uninstall_view_apk_cmd).wait()
 
     print(time.ctime() + "~~ Device " + device_id + ":Get apps' package names success.")
 
@@ -39,6 +39,9 @@ def getAppPackageName(create_time, device_id):
 
     print(time.ctime() + "~~ Device " + device_id + ':App lists load successfully, total ' + str(
         len(applists)) + ' apps.')
+
+    remove_list_in_phone_cmd = 'adb -s ' + device_id + ' shell rm /sdcard/packages_visual.txt'
+    commandLine(remove_list_in_phone_cmd).wait()
     return applists
 
 
@@ -54,7 +57,7 @@ def killMonkeyTestProcess(device_id):
     kill_monkey_test_process_cmd = 'adb -s ' + device_id + ' shell kill ' + str(monkey_test_process)
     try:
         print(time.ctime() + "~~ Device " + device_id + ': Killing monkey test process.')
-        commandLine(kill_monkey_test_process_cmd).wait(10)
+        commandLine(kill_monkey_test_process_cmd)
         print(time.ctime() + "~~ Device " + device_id + ': Monkey test process killed.')
 
     except:
@@ -73,9 +76,9 @@ def killBackgroundProcess(device_id):
                                        + str(int(540 / 1080 * screenWidth)) + ' ' + str(int(1580 / 1920 * screenHeight))
 
     print(time.ctime() + "~~ Device " + device_id + ': Killing background processes.')
-    commandLine(tap_app_switch).wait(10)
+    commandLine(tap_app_switch).wait()
     time.sleep(2)
-    commandLine(kill_all_background_apps_cmd).wait(10)
+    commandLine(kill_all_background_apps_cmd)
 
 
 # Definition for result save
@@ -166,14 +169,12 @@ def randomMonkeyTest(create_dir_time, device_id, test_package_names, event_inter
 def sequenceMonkeyTest(create_dir_time, device_id, test_package_names, running_time, event_interval, event_count,
                        is_screen_off, screen_off_time):
     screen_off_time = float(screen_off_time)
-    screenWidth = deviceScreenWidth(device_id)
-    screenHeight = deviceScreenHeight(device_id)
 
     tap_app_switch = 'adb -s ' + device_id + ' shell input keyevent KEYCODE_APP_SWITCH'
     takeScreenshot_cmd = "adb -s " + device_id + " shell screencap -p /sdcard/test.png"
 
     print(time.ctime() + "~~ Device " + device_id + ': Rebooting, please wait.')
-    commandLine('adb -s ' + device_id + ' reboot').wait(10)
+    commandLine('adb -s ' + device_id + ' reboot').wait()
 
     try:
         commandLine('adb -s ' + device_id + ' wait-for-device').wait(90)
@@ -206,13 +207,13 @@ def sequenceMonkeyTest(create_dir_time, device_id, test_package_names, running_t
                                                                 '--ignore-timeouts --monitor-native-crashes -v -v -v ' \
                          + str(event_count) + ' > '
             if (datetime.now() - startTime).seconds < int(running_time) * 60:
-                commandLine(monkey_cmd + saveAdbLog(testPackage + '_', create_dir_time, device_id)).wait()
+                commandLine(monkey_cmd + saveAdbLog(testPackage + '_', create_dir_time, device_id))
+                time.sleep(600)
+                killMonkeyTestProcess(device_id)
+
                 print(time.ctime() + "~~ Device " + device_id + ': App: "' + str(testPackage) +
                       '" test end, back to home screen.')
                 commandLine('adb -s ' + device_id + ' shell input keyevent KEYCODE_HOME').wait(10)
-                if str(testPackage) == 'com.gionee.sidebar':
-                    commandLine("adb -s " + device_id + " shell input tap " +
-                                str(int(80 / 1080 * screenWidth)) + ' ' + str(int(70 / 1920 * screenHeight)))
                 if is_screen_off == 'true':
                     print(time.ctime() + "~~ Device " + device_id + ': Screen will be off ' + str(screen_off_time) +
                           ' minutes.')

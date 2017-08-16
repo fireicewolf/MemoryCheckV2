@@ -48,5 +48,7 @@ Temporary Items
 
 #
 /Result/
+/Python3/
+/Samples
 /scripts/__pycache__/
-/python3/
+*.xlsx

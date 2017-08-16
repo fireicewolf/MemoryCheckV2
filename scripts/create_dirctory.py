@@ -8,7 +8,7 @@ from .device_info import buildVersion
 
 # Definition for result directory
 def createResultDir(create_time):
-    result_path = ".\\Result"
+    result_path = os.path.join(".", "Result")
     result_path_is_exists = os.path.exists(result_path)
     if not result_path_is_exists:
         os.makedirs(result_path)
@@ -20,8 +20,9 @@ def createResultDir(create_time):
 
 
 def deviceDirName(device_id):
-    device_dir_name = manufacturer(device_id) + '__' + model(device_id) + '__' + device_id + '__' +\
-                      buildVersion(device_id)
+    # device_dir_name = manufacturer(device_id) + '__' + model(device_id) + '__' + device_id + '__' +\
+    #                   buildVersion(device_id)
+    device_dir_name = device_id
     return device_dir_name
 
 
