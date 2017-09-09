@@ -18,18 +18,25 @@ def saveMemInfoBeforeTest(create_time, device_id):
     return save_mem_info_before_test
 
 
-def saveMemInfo(create_time, device_id):
+def saveMemInfoBeforeCleaningProcesses(create_time, device_id):
     dumpsyslogsdir = createdumpsysLogsDir(create_time, device_id)
-    save_mem_info = dumpsyslogsdir + 'meminfo_before_clear_process_' + time.strftime('%Y.%m.%d_%H-%M-%S',
+    save_mem_info = dumpsyslogsdir + 'meminfo_before_clean_process_' + time.strftime('%Y.%m.%d_%H-%M-%S',
                                                                                      time.localtime()) + '.txt'
     return save_mem_info
 
 
-def saveMemInfoAfterClearProcess(create_time, device_id):
+def saveMemInfoAfterAutoClearProcess(create_time, device_id):
     dumpsyslogsdir = createdumpsysLogsDir(create_time, device_id)
-    save_mem_info_after_clear_process = dumpsyslogsdir + 'meminfo_after_clear_process_' + time.strftime(
+    save_mem_info_after_auto_clean_process = dumpsyslogsdir + 'meminfo_after_auto_clean_process_' + time.strftime(
         '%Y.%m.%d_%H-%M-%S', time.localtime()) + '.txt'
-    return save_mem_info_after_clear_process
+    return save_mem_info_after_auto_clean_process
+
+
+def saveMemInfoAfterManualClearProcess(create_time, device_id):
+    dumpsyslogsdir = createdumpsysLogsDir(create_time, device_id)
+    save_mem_info_after_manual_clean_process = dumpsyslogsdir + 'meminfo_after_manual_clean_process_' + time.strftime(
+        '%Y.%m.%d_%H-%M-%S', time.localtime()) + '.txt'
+    return save_mem_info_after_manual_clean_process
 
 
 def saveDumpsysAfterWholeTest(create_time, device_id):
@@ -39,7 +46,8 @@ def saveDumpsysAfterWholeTest(create_time, device_id):
     return save_mem_info_after_whole_test
 
 
-def saveScreenshots(create_time, device_id):
-    dumpsyslogsdir = createScreenshotDir(create_time, device_id)
-    save_screenshot = dumpsyslogsdir + 'screenshot_' + time.strftime('%Y.%m.%d_%H-%M-%S', time.localtime()) + '.png'
+def saveScreenshots(filename, create_time, device_id):
+    screenshotDir = createScreenshotDir(create_time, device_id)
+
+    save_screenshot = screenshotDir + filename + time.strftime('%Y.%m.%d_%H-%M-%S', time.localtime()) + '.png'
     return save_screenshot

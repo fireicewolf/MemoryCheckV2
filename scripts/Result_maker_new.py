@@ -61,7 +61,7 @@ def resultMakerNew(save_path, remix_test_packages, monkey_test_time, monkey_even
             device_id = dir_name
             this_manufacturer = manufacturer(device_id)
             this_model = model(device_id)
-            this_build_version  = buildVersion(device_id)
+            this_build_version = buildVersion(device_id)
 
             worksheet = workbook.add_worksheet(this_model + ' ' + device_id)
 
@@ -92,7 +92,8 @@ def resultMakerNew(save_path, remix_test_packages, monkey_test_time, monkey_even
             worksheet.merge_range('A7:F7', 'Test Result', yellow_title_format)
 
             memory_info_before_clear_process_list = list()
-            memory_info_after_clear_process_list = list()
+            memory_info_after_auto_clear_process_list = list()
+            memory_info_after_manual_clear_process_list = list()
 
             for result_dirpath, result_dir_names, result_file_names in os.walk(
                                     memory_info_dir + os.path.sep + dir_name):
@@ -130,11 +131,14 @@ def resultMakerNew(save_path, remix_test_packages, monkey_test_time, monkey_even
                         worksheet.write('F5', used_ram_before_test, num_cell_format)
                         worksheet.write('F6', free_ram_before_test, num_cell_format)
 
-                    if result_file_name.startswith('meminfo_before_clear_process_'):
+                    if result_file_name.startswith('meminfo_before_clean_process_'):
                         memory_info_before_clear_process_list.append(result_file_name)
 
-                    if result_file_name.startswith('meminfo_after_clear_process_'):
-                        memory_info_after_clear_process_list.append(result_file_name)
+                    if result_file_name.startswith('meminfo_after_auto_clean_process_'):
+                        memory_info_after_auto_clear_process_list.append(result_file_name)
+
+                    if result_file_name.startswith('meminfo_after_manual_clean_process_'):
+                        memory_info_after_manual_clear_process_list.append(result_file_name)
 
             for i in range(len(memory_info_before_clear_process_list)):
                 round_row_num = 8 + i * 17
@@ -152,7 +156,7 @@ def resultMakerNew(save_path, remix_test_packages, monkey_test_time, monkey_even
                 worksheet.write('B' + str(round_row_num + 6), 'Memory used (MB)', light_blue_format)
 
                 filename = memory_info_before_clear_process_list[i]
-                get_memory_info_time = filename.strip('meminfo_before_clear_process_|.txt')
+                get_memory_info_time = filename.strip('meminfo_before_clean_process_|.txt')
                 get_memory_info_time = get_memory_info_time.replace('_', ' ')
                 get_memory_info_time = get_memory_info_time.replace('-', ':')
 
@@ -183,11 +187,11 @@ def resultMakerNew(save_path, remix_test_packages, monkey_test_time, monkey_even
                     worksheet.write('A' + process_cell_row_num, process_name, process_name_cell_format)
                     worksheet.write('B' + process_cell_row_num, process_mem_usage, num_cell_format)
 
-            for i in range(len(memory_info_after_clear_process_list)):
+            for i in range(len(memory_info_after_auto_clear_process_list)):
                 round_row_num = 8 + i * 17
 
                 worksheet.merge_range('C' + str(round_row_num + 1) + ':D' + str(round_row_num + 1),
-                                      'After cleaning background processes', light_green_format)
+                                      'After auto cleaning background processes', light_green_format)
                 worksheet.write('C' + str(round_row_num + 2), 'Test Time', light_blue_format)
                 worksheet.write('C' + str(round_row_num + 3), 'Used RAM (MB)', light_blue_format)
                 worksheet.write('C' + str(round_row_num + 4), 'Free RAM (MB)', light_blue_format)
@@ -196,8 +200,8 @@ def resultMakerNew(save_path, remix_test_packages, monkey_test_time, monkey_even
                 worksheet.write('C' + str(round_row_num + 6), 'Package Name', light_blue_format)
                 worksheet.write('D' + str(round_row_num + 6), 'Memory used (MB)', light_blue_format)
 
-                filename = memory_info_after_clear_process_list[i]
-                get_memory_info_time = filename.strip('meminfo_after_clear_process_|.txt')
+                filename = memory_info_after_auto_clear_process_list[i]
+                get_memory_info_time = filename.strip('meminfo_after_auto_clean_process_|.txt')
                 get_memory_info_time = get_memory_info_time.replace('_', ' ')
                 get_memory_info_time = get_memory_info_time.replace('-', ':')
 
@@ -228,20 +232,50 @@ def resultMakerNew(save_path, remix_test_packages, monkey_test_time, monkey_even
                     worksheet.write('C' + process_cell_row_num, process_name, process_name_cell_format)
                     worksheet.write('D' + process_cell_row_num, process_mem_usage, num_cell_format)
 
-                start_cell_row_num = 9 + i * 17
+            for i in range(len(memory_info_after_manual_clear_process_list)):
+                round_row_num = 8 + i * 17
 
-                worksheet.merge_range('E' + str(start_cell_row_num) + ':F' + str(start_cell_row_num + 1),
-                                      'Memory Interpolation', blue_format)
-                worksheet.write('E' + str(start_cell_row_num + 2), 'Used RAM (MB)', light_blue_format)
-                worksheet.write('E' + str(start_cell_row_num + 3), 'Free RAM (MB)', light_blue_format)
-                worksheet.merge_range('E' + str(start_cell_row_num + 4) + ':F' + str(start_cell_row_num + 15),
-                                      '', light_grey_format)
-                worksheet.write('F' + str(start_cell_row_num + 2),
-                                '=B' + str(start_cell_row_num + 2) + '-D' + str(start_cell_row_num + 2),
-                                num_cell_format)
-                worksheet.write('F' + str(start_cell_row_num + 3),
-                                '=D' + str(start_cell_row_num + 3) + '-B' + str(start_cell_row_num + 3),
-                                num_cell_format)
+                worksheet.merge_range('E' + str(round_row_num + 1) + ':F' + str(round_row_num + 1),
+                                      'After manual cleaning background processes', blue_format)
+                worksheet.write('E' + str(round_row_num + 2), 'Test Time', light_blue_format)
+                worksheet.write('E' + str(round_row_num + 3), 'Used RAM (MB)', light_blue_format)
+                worksheet.write('E' + str(round_row_num + 4), 'Free RAM (MB)', light_blue_format)
+                worksheet.merge_range('E' + str(round_row_num + 5) + ':F' + str(round_row_num + 5),
+                                      'Top 10 Processes Info', blue_format)
+                worksheet.write('E' + str(round_row_num + 6), 'Package Name', light_blue_format)
+                worksheet.write('F' + str(round_row_num + 6), 'Memory used (MB)', light_blue_format)
+
+                filename = memory_info_after_manual_clear_process_list[i]
+                get_memory_info_time = filename.strip('meminfo_after_manual_clean_process_|.txt')
+                get_memory_info_time = get_memory_info_time.replace('_', ' ')
+                get_memory_info_time = get_memory_info_time.replace('-', ':')
+
+                with open(memory_info_dir + os.path.sep + dir_name + os.path.sep + filename, 'r') as f:
+                    file = f.readlines()
+
+                for line in file:
+                    if "Free RAM:" in line:
+                        line = line.strip('Free RAM (MB): ')
+                        line = line.split('K')
+                        free_ram_after_cleaning_processes = float(int(line[0].replace(',', '')) / 1000)
+                    if "Used RAM:" in line:
+                        line = line.strip('Used RAM (MB): ')
+                        line = line.split('K')
+                        used_ram_after_cleaning_processes = float(int(line[0].replace(',', '')) / 1000)
+
+                worksheet.write('F' + str(round_row_num + 2), get_memory_info_time, default_cell_format)
+                worksheet.write('F' + str(round_row_num + 3), used_ram_after_cleaning_processes, num_cell_format)
+                worksheet.write('F' + str(round_row_num + 4), free_ram_after_cleaning_processes, num_cell_format)
+
+                for a in range(8, 27, 2):
+                    b = int(a / 2 - 4)
+                    process_name = file[a].strip().split('K: ')[1]
+                    process_mem_usage = file[a].strip().split('K: ')[0].replace(',', '')
+                    process_mem_usage = float(int(process_mem_usage) / 1000)
+                    process_cell_row_num = str(15 + b + i * 17)
+
+                    worksheet.write('E' + process_cell_row_num, process_name, process_name_cell_format)
+                    worksheet.write('F' + process_cell_row_num, process_mem_usage, num_cell_format)
 
     workbook.close()
     print(time.ctime() + "~~ '" + result_name + "' saved.")

@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21a0765f-4f58-4ae3-ad01-230b8718c501" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/__init__.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/MemoryCheckV2.iml" afterPath="$PROJECT_DIR$/.idea/MemoryCheckV2.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main_test.py" afterPath="$PROJECT_DIR$/Main_test.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monkey_test_config.ini" afterPath="$PROJECT_DIR$/monkey_test_config.ini" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/Result_maker_new.py" afterPath="$PROJECT_DIR$/scripts/Result_maker_new.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/monkey_test.py" afterPath="$PROJECT_DIR$/scripts/monkey_test.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/save_files.py" afterPath="$PROJECT_DIR$/scripts/save_files.py" />
     </list>
     <ignored path="./Result/" />
     <ignored path="Samples/" />
@@ -17,7 +21,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/MemoryCheckV2$Main_test.coverage" NAME="Main_test Coverage Results" MODIFIED="1502800695234" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MemoryCheckV2$Main_test.coverage" NAME="Main_test Coverage Results" MODIFIED="1504696919893" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MemoryCheckV2$device_info.coverage" NAME="device_info Coverage Results" MODIFIED="1498547167967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
     <SUITE FILE_PATH="coverage/MemoryCheckV2$monkey_test.coverage" NAME="monkey_test Coverage Results" MODIFIED="1499219511493" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
     <SUITE FILE_PATH="coverage/MemoryCheckV2$Result_maker_new.coverage" NAME="Result_maker_new Coverage Results" MODIFIED="1502673414618" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
@@ -37,14 +41,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main_test.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main_test.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Main_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="828">
-              <caret line="46" column="24" lean-forward="false" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
+            <state relative-caret-position="479">
+              <caret line="95" column="0" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="100" selection-end-column="16" />
               <folding>
                 <element signature="e#15#34#0" expanded="true" />
-                <marker date="1502768509510" expanded="true" signature="1513:2056" ph="..." />
+                <marker date="1504696814836" expanded="true" signature="4079:4178" ph="..." />
+                <marker date="1504696814836" expanded="true" signature="4208:4442" ph="..." />
+                <marker date="1504696814836" expanded="true" signature="4230:4274" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="save_files.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/save_files.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1173">
+              <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+              <folding>
+                <element signature="e#15#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -53,34 +71,11 @@
       <file leaf-file-name="monkey_test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/monkey_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1242">
-              <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+            <state relative-caret-position="4669">
+              <caret line="212" column="0" lean-forward="false" selection-start-line="212" selection-start-column="0" selection-end-line="212" selection-end-column="0" />
               <folding>
                 <element signature="e#15#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="device_info.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/device_info.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="5" column="37" lean-forward="false" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
-              <folding>
-                <element signature="e#16#25#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Result_maker_new.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/scripts/Result_maker_new.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1817">
-              <caret line="172" column="96" lean-forward="false" selection-start-line="172" selection-start-column="62" selection-end-line="172" selection-end-column="96" />
-              <folding>
-                <element signature="e#16#25#0" expanded="true" />
+                <marker date="1504176069871" expanded="true" signature="16000:16002" ph="..." />
               </folding>
             </state>
           </provider>
@@ -89,18 +84,8 @@
       <file leaf-file-name="monkey_test_config.ini" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/monkey_test_config.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="17" column="15" lean-forward="false" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="create_dirctory.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/create_dirctory.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+            <state relative-caret-position="46">
+              <caret line="2" column="18" lean-forward="false" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -127,6 +112,8 @@
       <find>sid</find>
       <find>soft</find>
       <find>model</find>
+      <find>savescreen</find>
+      <find>Round</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -161,12 +148,12 @@
         <option value="$PROJECT_DIR$/monkeytest.ini" />
         <option value="$PROJECT_DIR$/Result/2017.06.29_15-26-31/adb_logs/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0179/monkey_logs_com.android.calendar_2017.06.29_15-34-07.txt" />
         <option value="$PROJECT_DIR$/scripts/Result_maker.py" />
-        <option value="$PROJECT_DIR$/scripts/save_files.py" />
-        <option value="$PROJECT_DIR$/monkey_test_config.ini" />
-        <option value="$PROJECT_DIR$/scripts/Result_maker_new.py" />
-        <option value="$PROJECT_DIR$/scripts/monkey_test.py" />
         <option value="$PROJECT_DIR$/scripts/device_info.py" />
         <option value="$PROJECT_DIR$/scripts/create_dirctory.py" />
+        <option value="$PROJECT_DIR$/scripts/Result_maker_new.py" />
+        <option value="$PROJECT_DIR$/scripts/save_files.py" />
+        <option value="$PROJECT_DIR$/scripts/monkey_test.py" />
+        <option value="$PROJECT_DIR$/monkey_test_config.ini" />
         <option value="$PROJECT_DIR$/Main_test.py" />
       </list>
     </option>
@@ -184,11 +171,11 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="y" value="28" />
+    <option name="width" value="1717" />
+    <option name="height" value="908" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -204,7 +191,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -217,6 +203,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -228,15 +215,15 @@
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\workspace\MemoryCheckV2\scripts\Result" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\workspace\MemoryCheckV2\Result\2017.07.18_13-13-46\dumpsys_logs\GIONEE__M6SPlus__4326b4c7__BJ_G1602A_sign_T0205" />
       <recent name="D:\workspace\MemoryCheckV2\Result\2017.07.18_13-13-46\dumpsys_logs\GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0205" />
       <recent name="D:\workspace\MemoryCheckV2\Result\2017.07.20_14-03-40\adb_logs\GIONEE__M6SPlus__4326b4c7__BJ_G1602A_sign_T0205" />
       <recent name="D:\workspace\MemoryCheckV2\Result\2017.07.20_14-03-40\dumpsys_logs\GIONEE__M6SPlus__4326b4c7__BJ_G1602A_sign_T0205" />
       <recent name="D:\workspace\MemoryCheckV2\scripts" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\workspace\MemoryCheckV2\scripts\Result" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -615,7 +602,14 @@
       <option name="project" value="LOCAL" />
       <updated>1500617750407</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Codes update">
+      <created>1502848222615</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1502848222615</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TodoView">
@@ -630,47 +624,47 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16151386" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19083156" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4893617" sideWeight="0.5032017" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47386363" sideWeight="0.5048026" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2633297" sideWeight="0.4967983" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35610303" sideWeight="0.4978678" order="5" side_tool="false" content_ui="tabs" x="0" y="726" width="1920" height="314" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2633297" sideWeight="0.4967983" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922733" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47182322" sideWeight="0.49519745" order="5" side_tool="false" content_ui="tabs" x="0" y="726" width="1920" height="314" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969433" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3991323" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3988827" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286334" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281075" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Concurrent Activities Diagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33623505" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286334" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33551198" sideWeight="0.4978678" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4893617" sideWeight="0.5032017" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2633297" sideWeight="0.4967983" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922733" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35610303" sideWeight="0.4978678" order="5" side_tool="false" content_ui="tabs" x="0" y="726" width="1920" height="314" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969433" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17342582" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286334" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281075" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Concurrent Activities Diagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3991323" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3991323" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -682,6 +676,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
+    <ignored-roots>
+      <path value="D:\workspace\MemoryCheckV2\MemoryCheckV2" />
+    </ignored-roots>
     <MESSAGE value="New way for clean background process&#10;Add average ram in result file" />
     <MESSAGE value="Add new way for getting package names" />
     <MESSAGE value="Codes update" />
@@ -694,14 +691,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Result/2017.06.29_11-29-46/adb_logs/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0179/monkey_logs_com.gionee.aora.market_2017.06.29_11-38-17.txt" />
-    <entry file="file://$PROJECT_DIR$/Result/2017.06.29_11-52-24/adb_logs/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0179/monkey_logs_com.android.browser_2017.06.29_11-56-15.txt" />
-    <entry file="file://$PROJECT_DIR$/Result/2017.06.29_15-26-31/adb_logs/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0179/monkey_logs_com.android.calendar_2017.06.29_15-34-07.txt" />
-    <entry file="file://$PROJECT_DIR$/Result/2017.06.29_16-39-19/adb_logs/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0179/monkey_logs_com.android.deskclock_2017.06.29_21-35-42.txt" />
-    <entry file="file://$PROJECT_DIR$/Result/2017.06.29_16-39-19/adb_logs/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0179/monkey_logs_com.gionee.filemanager_2017.06.29_18-04-11.txt" />
-    <entry file="file://$PROJECT_DIR$/Result/2017.06.29_16-39-19/adb_logs/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0179/monkey_logs_jlzn.com.android.compass_2017.06.29_20-59-45.txt" />
-    <entry file="file://$PROJECT_DIR$/Result/2017.06.29_16-39-19/adb_logs/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0179/monkey_logs_com.android.browser_2017.06.29_18-28-52.txt" />
-    <entry file="file://$PROJECT_DIR$/Result/2017.06.29_16-39-19/adb_logs/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0179/monkey_logs_com.android.settings_2017.06.29_16-40-25.txt" />
     <entry file="file://$PROJECT_DIR$/Result/2017.06.29_16-39-19/adb_logs/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0179/monkey_logs_com.gionee.gallery_2017.06.29_22-35-42.txt" />
     <entry file="file://D:/Develop_Tools/Python/Lib/site-packages/xlsxwriter/worksheet.py" />
     <entry file="file://$PROJECT_DIR$/scripts/Result_maker.py">
@@ -711,136 +700,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Result/2017.07.04_17-14-30/dumpsys_logs/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0179/meminfo_before_test_2017.07.04_17-25-34.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-12962">
-          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Result/2017.07.04_17-14-30/dumpsys_logs/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0179/meminfo_before_clear_process_2017.07.05_06-18-58.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-20483">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Result/2017.07.04_17-14-30/dumpsys_logs/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0179/meminfo_after_clear_process_2017.07.05_06-20-09.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-20483">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Result/2017.07.06_10-21-01/adb_logs/GIONEE__GN8003L__AM8PQGTOSSO7JNFU__BBL7515C_LN_sign_T0049/monkey_logs_com.amigo.chameleon_2017.07.06_10-34-37.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2681">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Result/2017.07.06_10-21-01/adb_logs/GIONEE__GN8003L__AM8PQGTOSSO7JNFU__BBL7515C_LN_sign_T0049/monkey_logs_com.mediatek.schpwronoff_2017.07.06_10-35-27.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2681">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Result/2017.07.06_18-21-00/adb_logs/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0179/monkey_logs_com.android.camera_2017.07.06_20-33-04.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="207" column="0" lean-forward="true" selection-start-line="207" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Result/2017.07.13_02-19-15/adb_logs/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0205/monkey_logs_com.android.mms_2017.07.13_02-52-15.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Result/2017.07.18_18-01-29/screenshots/GIONEE__M6SPlus__4326b4c7__BJ_G1602A_sign_T0205/screenshot_2017.07.19_00-16-07.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Result/2017.07.18_18-01-29/screenshots/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0205/screenshot_2017.07.19_00-15-52.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Result/2017.07.18_18-01-29/packages_names_list/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0205/packages_names_list.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Result/2017.07.04_17-14-30/dumpsys_logs/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0179/meminfo_before_test_2017.07.04_17-25-34.txt" />
+    <entry file="file://$PROJECT_DIR$/Result/2017.07.04_17-14-30/dumpsys_logs/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0179/meminfo_before_clear_process_2017.07.05_06-18-58.txt" />
+    <entry file="file://$PROJECT_DIR$/Result/2017.07.04_17-14-30/dumpsys_logs/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0179/meminfo_after_clear_process_2017.07.05_06-20-09.txt" />
+    <entry file="file://$PROJECT_DIR$/Result/2017.07.06_10-21-01/adb_logs/GIONEE__GN8003L__AM8PQGTOSSO7JNFU__BBL7515C_LN_sign_T0049/monkey_logs_com.amigo.chameleon_2017.07.06_10-34-37.txt" />
+    <entry file="file://$PROJECT_DIR$/Result/2017.07.06_10-21-01/adb_logs/GIONEE__GN8003L__AM8PQGTOSSO7JNFU__BBL7515C_LN_sign_T0049/monkey_logs_com.mediatek.schpwronoff_2017.07.06_10-35-27.txt" />
+    <entry file="file://$PROJECT_DIR$/Result/2017.07.06_18-21-00/adb_logs/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0179/monkey_logs_com.android.camera_2017.07.06_20-33-04.txt" />
+    <entry file="file://$PROJECT_DIR$/Result/2017.07.13_02-19-15/adb_logs/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0205/monkey_logs_com.android.mms_2017.07.13_02-52-15.txt" />
+    <entry file="file://$PROJECT_DIR$/Result/2017.07.18_18-01-29/screenshots/GIONEE__M6SPlus__4326b4c7__BJ_G1602A_sign_T0205/screenshot_2017.07.19_00-16-07.png" />
+    <entry file="file://$PROJECT_DIR$/Result/2017.07.18_18-01-29/screenshots/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0205/screenshot_2017.07.19_00-15-52.png" />
+    <entry file="file://$PROJECT_DIR$/Result/2017.07.18_18-01-29/packages_names_list/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0205/packages_names_list.txt" />
     <entry file="file://$PROJECT_DIR$/Result/2017.07.18_13-13-46/dumpsys_logs/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0205/meminfo_before_test_2017.07.18_13-24-55.txt" />
     <entry file="file://$PROJECT_DIR$/Result/2017.07.18_13-13-46/dumpsys_logs/GIONEE__M6SPlus__4326b4c7__BJ_G1602A_sign_T0205/meminfo_before_test_2017.07.18_13-24-54.txt" />
     <entry file="file://$PROJECT_DIR$/Result/2017.07.18_13-13-46/dumpsys_logs/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0205/meminfo_after_whole_test_2017.07.18_13-43-28.txt" />
     <entry file="file://$PROJECT_DIR$/Result/2017.07.18_13-13-46/dumpsys_logs/GIONEE__M6SPlus__4326b4c7__BJ_G1602A_sign_T0205/meminfo_after_whole_test_2017.07.18_13-43-15.txt" />
-    <entry file="file://$PROJECT_DIR$/Result/2017.07.20_14-03-40/screenshots/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0205/screenshot_2017.07.20_20-26-09.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Result/2017.07.19_20-33-21/screenshots/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0205/screenshot_2017.07.20_02-50-53.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Result/2017.07.19_20-33-21/screenshots/GIONEE__M6SPlus__4326b4c7__BJ_G1602A_sign_T0205/screenshot_2017.07.20_02-52-30.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Result/2017.07.19_13-03-48/screenshots/GIONEE__M6SPlus__4326b4c7__BJ_G1602A_sign_T0205/screenshot_2017.07.19_19-19-50.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Result/2017.07.19_13-03-48/screenshots/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0205/screenshot_2017.07.19_19-19-44.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Result/2017.07.25_18-07-11/dumpsys_logs/GIONEE__M6SPlus__4326b4c7__BJ_G1602A_sign_T0205/dumpsys_after_whole_test_2017.07.26_00-27-52.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Result/2017.07.25_18-07-11/dumpsys_logs/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0205/dumpsys_after_whole_test_2017.07.26_01-13-56.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Result/2017.07.20_14-03-40/screenshots/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0205/screenshot_2017.07.20_20-26-09.png" />
+    <entry file="file://$PROJECT_DIR$/Result/2017.07.19_20-33-21/screenshots/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0205/screenshot_2017.07.20_02-50-53.png" />
+    <entry file="file://$PROJECT_DIR$/Result/2017.07.19_20-33-21/screenshots/GIONEE__M6SPlus__4326b4c7__BJ_G1602A_sign_T0205/screenshot_2017.07.20_02-52-30.png" />
+    <entry file="file://$PROJECT_DIR$/Result/2017.07.19_13-03-48/screenshots/GIONEE__M6SPlus__4326b4c7__BJ_G1602A_sign_T0205/screenshot_2017.07.19_19-19-50.png" />
+    <entry file="file://$PROJECT_DIR$/Result/2017.07.19_13-03-48/screenshots/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0205/screenshot_2017.07.19_19-19-44.png" />
+    <entry file="file://$PROJECT_DIR$/Result/2017.07.25_18-07-11/dumpsys_logs/GIONEE__M6SPlus__4326b4c7__BJ_G1602A_sign_T0205/dumpsys_after_whole_test_2017.07.26_00-27-52.txt" />
+    <entry file="file://$PROJECT_DIR$/Result/2017.07.25_18-07-11/dumpsys_logs/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0205/dumpsys_after_whole_test_2017.07.26_01-13-56.txt" />
     <entry file="file://$PROJECT_DIR$/Result/2017.07.28_09-14-11/packages_names_list/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0205/packages_names_list.txt" />
-    <entry file="file://$PROJECT_DIR$/Result/2017.08.02_17-55-36/screenshots/GIONEE__M6SPlus__4326b4c7__BJ_G1602A_sign_T0205/screenshot_2017.08.03_00-12-31.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Result/2017.08.02_17-55-36/screenshots/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0205/screenshot_2017.08.03_00-19-03.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Result/2017.08.03_18-43-50/screenshots/GIONEE__M6SPlus__4326b4c7__BJ_G1602A_sign_T0205/screenshot_2017.08.04_01-00-26.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Result/2017.08.03_18-43-50/screenshots/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0205/screenshot_2017.08.04_01-05-32.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Result/2017.08.02_17-55-36/screenshots/GIONEE__M6SPlus__4326b4c7__BJ_G1602A_sign_T0205/screenshot_2017.08.03_00-12-31.png" />
+    <entry file="file://$PROJECT_DIR$/Result/2017.08.02_17-55-36/screenshots/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0205/screenshot_2017.08.03_00-19-03.png" />
+    <entry file="file://$PROJECT_DIR$/Result/2017.08.03_18-43-50/screenshots/GIONEE__M6SPlus__4326b4c7__BJ_G1602A_sign_T0205/screenshot_2017.08.04_01-00-26.png" />
+    <entry file="file://$PROJECT_DIR$/Result/2017.08.03_18-43-50/screenshots/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0205/screenshot_2017.08.04_01-05-32.png" />
     <entry file="file://$PROJECT_DIR$/scripts/command_line.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
@@ -848,73 +733,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/save_files.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="36" column="80" lean-forward="false" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Result/2017.08.12_16-42-39/adb_logs/G6YS7SSOJJKFPBUC/monkey_logs_com.android.browser_2017.08.12_16-53-51.txt" />
-    <entry file="file://$PROJECT_DIR$/Result/2017.08.12_17-36-34/dumpsys_logs/G6YS7SSOJJKFPBUC/meminfo_after_clear_process_2017.08.12_23-52-41.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5603">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Result/2017.08.12_17-36-34/screenshots/G6YS7SSOJJKFPBUC/screenshot_2017.08.12_23-51-40.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/create_dirctory.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/device_info.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="5" column="37" lean-forward="false" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
-          <folding>
-            <element signature="e#16#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/monkey_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1242">
-          <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-          <folding>
-            <element signature="e#15#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monkey_test_config.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="17" column="15" lean-forward="false" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Main_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="46" column="24" lean-forward="false" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
-          <folding>
-            <element signature="e#15#34#0" expanded="true" />
-            <marker date="1502768509510" expanded="true" signature="1513:2056" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Result/2017.08.12_17-36-34/dumpsys_logs/G6YS7SSOJJKFPBUC/meminfo_after_clear_process_2017.08.12_23-52-41.txt" />
+    <entry file="file://$PROJECT_DIR$/Result/2017.08.12_17-36-34/screenshots/G6YS7SSOJJKFPBUC/screenshot_2017.08.12_23-51-40.png" />
     <entry file="file://$PROJECT_DIR$/Result/2017.08.15_20-38-15/screenshots/G6YS7SSOJJKFPBUC/screenshot_2017.08.16_02-53-11.png" />
     <entry file="file://$PROJECT_DIR$/Result/2017.08.15_20-38-15/screenshots/NZAI4S5SK76TOBO7/screenshot_2017.08.16_02-53-15.png" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -924,12 +745,79 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Result/2017.08.16_17-52-44/screenshots/NZAI4S5SK76TOBO7/screenshot_2017.08.17_00-07-48.png" />
+    <entry file="file://$PROJECT_DIR$/Result/2017.08.16_17-52-44/screenshots/G6YS7SSOJJKFPBUC/screenshot_2017.08.17_00-07-47.png" />
+    <entry file="file://$PROJECT_DIR$/scripts/create_dirctory.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Result/2017.08.17_18-25-23/screenshots/3HX0216B02022466/screenshot_2017.08.18_01-44-46.png" />
+    <entry file="file://$PROJECT_DIR$/Result/2017.08.18_09-10-33/screenshots/3HX0216B02022466/screenshot_2017.08.18_16-29-57.png" />
+    <entry file="file://$PROJECT_DIR$/Result/2017.08.21_18-04-14/screenshots/de87c442/screenshot_2017.08.22_01-24-34.png" />
+    <entry file="file://$PROJECT_DIR$/Result/2017.08.21_18-04-14/screenshots/NZAI4S5SK76TOBO7/screenshot_2017.08.22_01-24-33.png" />
+    <entry file="file://$PROJECT_DIR$/scripts/device_info.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-429">
+          <caret line="35" column="16" lean-forward="false" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/Result_maker_new.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1817">
-          <caret line="172" column="96" lean-forward="false" selection-start-line="172" selection-start-column="62" selection-end-line="172" selection-end-column="96" />
+        <state relative-caret-position="-973">
+          <caret line="188" column="0" lean-forward="true" selection-start-line="142" selection-start-column="12" selection-end-line="188" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///media/john/软件/workspace/MemoryCheckV2/scripts/Result_maker_new.py" />
+    <entry file="file://$PROJECT_DIR$/.pydevproject">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monkey_test_config.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="18" lean-forward="false" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/monkey_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4669">
+          <caret line="212" column="0" lean-forward="false" selection-start-line="212" selection-start-column="0" selection-end-line="212" selection-end-column="0" />
           <folding>
-            <element signature="e#16#25#0" expanded="true" />
+            <element signature="e#15#26#0" expanded="true" />
+            <marker date="1504176069871" expanded="true" signature="16000:16002" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/save_files.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1173">
+          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding>
+            <element signature="e#15#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="479">
+          <caret line="95" column="0" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="100" selection-end-column="16" />
+          <folding>
+            <element signature="e#15#34#0" expanded="true" />
+            <marker date="1504696814836" expanded="true" signature="4079:4178" ph="..." />
+            <marker date="1504696814836" expanded="true" signature="4208:4442" ph="..." />
+            <marker date="1504696814836" expanded="true" signature="4230:4274" ph="..." />
           </folding>
         </state>
       </provider>
