@@ -63,6 +63,16 @@ def buildVersion(device_id):
     return str(build_version_code)
 
 
+# Definition for device's sdk level
+def buildVersionSDK(device_id):
+    build_version_sdk_cmd = 'adb -s '+device_id+' shell getprop ro.build.version.sdk'
+    build_version_sdk_code = commandLine(build_version_sdk_cmd).stdout.read()
+    build_version_sdk_code = build_version_sdk_code.decode()
+    build_version_sdk_code = build_version_sdk_code.strip()
+    return int(build_version_sdk_code)
+
+
+
 # Definition for screen resolution
 def deviceScreenResolution(device_id):
     screenResolution_cmd = "adb -s " + device_id + " shell wm size"

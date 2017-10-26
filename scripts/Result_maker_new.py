@@ -9,10 +9,6 @@ from .device_info import buildVersion
 
 
 def resultMakerNew(save_path, remix_test_packages, monkey_test_time, monkey_event_interval, monkey_event_count):
-    global free_ram_after_cleaning_processes, used_ram_after_cleaning_processes, \
-        free_ram_before_cleaning_processes, used_ram_before_cleaning_processes, \
-        total_ram_before_test, used_ram_before_test, free_ram_before_test, \
-        used_ram_after_whole_test, total_ram_after_whole_test, free_ram_after_whole_test
 
     memory_info_dir = save_path + 'dumpsys_logs'
     result_name = save_path + "Test Result_" + time.strftime('%Y.%m.%d_%H-%M-%S', time.localtime()) + ".xlsx"

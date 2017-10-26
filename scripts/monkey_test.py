@@ -3,10 +3,11 @@ import time
 import random
 from datetime import datetime
 
+import os
+
 from .command_line import commandLine
 from .create_dirctory import createPackageListDir
-from .device_info import adbstatus, model, manufacturer
-from .device_info import deviceScreenWidth, deviceScreenHeight, screenOn, screenOff
+from .device_info import adbstatus, model, manufacturer, buildVersionSDK, deviceScreenWidth, deviceScreenHeight, screenOn, screenOff
 from .save_files import saveAdbLog, saveMemInfoBeforeTest, saveMemInfoBeforeCleaningProcesses,\
     saveMemInfoAfterAutoClearProcess, saveMemInfoAfterManualClearProcess, saveScreenshots, saveDumpsysAfterWholeTest
 
@@ -26,18 +27,43 @@ def getAppPackageName(create_time, device_id):
     uninstall_view_apk_cmd = 'adb -s ' + device_id + ' uninstall com.gionee.packages'
     commandLine(uninstall_view_apk_cmd).wait(30)
 
-    print(time.ctime() + "~~ Device " + device_id + ":Get apps' package names success.")
+    print(time.ctime() + "~~ Device " + device_id + ": Get apps' package names success.")
 
-    openapplists = open(createPackageListDir(create_time, device_id) + 'packages_names_list.txt', 'r')
-    applists = openapplists.read().split('\n')
-    applists.pop()
+    open_app_lists = open(createPackageListDir(create_time, device_id) + 'packages_names_list.txt', 'r')
 
-    print(time.ctime() + "~~ Device " + device_id + ':App lists load successfully, total ' + str(
-        len(applists)) + ' apps.')
+    app_lists = open_app_lists.read().split('\n')
+    app_lists.pop()
+
+    print(time.ctime() + "~~ Device " + device_id + ': App lists load successfully, total ' + str(
+        len(app_lists)) + ' apps.')
 
     remove_list_in_phone_cmd = 'adb -s ' + device_id + ' shell rm /sdcard/packages_visual.txt'
     commandLine(remove_list_in_phone_cmd).wait()
-    return applists
+    return app_lists
+
+
+def getAppPackageNameNew(manufacturer_path_name, model_path_name, device_id):
+    package_list_dir = os.path.join(".", "Package lists", manufacturer_path_name, model_path_name)
+    package_list_dir_is_exist = os.path.exists(package_list_dir)
+    if not package_list_dir_is_exist:
+        os.makedirs(package_list_dir)
+        print(time.ctime() + "~~ Device " + device_id + ": Package list dir not found.")
+
+    else:
+        package_list = package_list_dir + os.path.sep + 'packages_names_list.txt'
+        package_list_is_exist = os.path.exists(package_list)
+        if package_list_is_exist:
+            print(time.ctime() + "~~ Device " + device_id + ": Package list found.")
+            open_app_lists = open(package_list, 'r')
+            app_lists = open_app_lists.read().split('\n')
+            app_lists.pop()
+
+            print(time.ctime() + "~~ Device " + device_id + ': App lists load successfully, total ' + str(
+                len(app_lists)) + ' apps.')
+            return app_lists
+
+        else:
+            print(time.ctime() + "~~ Device " + device_id + ": Package list not exist, please add it to right path.")
 
 
 def killMonkeyTestProcess(device_id):
@@ -66,8 +92,10 @@ def killBackgroundProcess(device_id):
 
     if model(device_id) == 'W909':
         kill_all_background_apps_cmd = 'adb -s ' + device_id + ' shell input tap 360 1115'
+
     elif model(device_id) == 'MHA-AL00':
         kill_all_background_apps_cmd = 'adb -s ' + device_id + ' shell input tap 540 1680'
+
     elif screenHeight/screenWidth == 2 and manufacturer == 'GIONEE':
         kill_all_background_apps_cmd = 'adb -s ' + device_id + ' shell input tap ' \
                                        + str(int(360 / 720 * screenWidth)) + ' ' + str(int(1170 / 1440 * screenHeight))
@@ -276,7 +304,6 @@ def sequenceMonkeyTest(create_dir_time, device_id, test_package_names, rounds, r
             print(time.ctime() + "~~ Device " + device_id + ': Device will be screen on and stay idle for 30 minutes')
             time.sleep(1800)
 
-            print(time.ctime() + "~~ Device " + device_id + ': Cleaning background processes.')
             killBackgroundProcess(device_id)
             print(time.ctime() + "~~ Device " + device_id + ': Background processes has been cleaned, wait 1 minutes.')
             time.sleep(60)
