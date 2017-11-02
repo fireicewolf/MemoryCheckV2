@@ -1,4 +1,4 @@
-#coding=utf-8
+# coding=utf-8
 
 import configparser
 import threading
@@ -23,10 +23,10 @@ blind_packages = str(config.get('config', 'Blind Packages'))
 is_screen_off = str(config.get('config', 'Screen off'))
 screen_off_time = '%.2f' % float(config.get('config', 'Screen off time'))
 
-# create_dir_time = '2017.10.23_16-18-32'
+# create_dir_time = '2017.10.30_12-41-09'
 create_dir_time = time.strftime('%Y.%m.%d_%H-%M-%S', time.localtime())
 print(time.ctime() + "~~ Test result will save in " + createResultDir(create_dir_time) + ".")
- 
+
 threads = []
 
 for device in device_list:
@@ -44,7 +44,7 @@ for device in device_list:
                     pass
                 else:
                     line = line.strip('\n')
-                    test_package_names += '-p '+line+' '
+                    test_package_names += '-p ' + line + ' '
         else:
             test_package_names = packages
     else:
@@ -81,7 +81,7 @@ for device in device_list:
         threads.append(t1)
 
 resultThread = threading.Thread(target=resultMakerNew, args=(createResultDir(create_dir_time), random_package_test,
-                                                          running_time, event_interval, event_count))
+                                                             running_time, event_interval, event_count))
 
 if __name__ == '__main__':
     for t in threads:

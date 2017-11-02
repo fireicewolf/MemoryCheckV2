@@ -1,6 +1,7 @@
 # coding=utf-8
 
 import os
+import re
 import time
 import xlsxwriter
 from .device_info import manufacturer
@@ -9,7 +10,6 @@ from .device_info import buildVersion
 
 
 def resultMakerNew(save_path, remix_test_packages, monkey_test_time, monkey_event_interval, monkey_event_count):
-
     memory_info_dir = save_path + 'dumpsys_logs'
     result_name = save_path + "Test Result_" + time.strftime('%Y.%m.%d_%H-%M-%S', time.localtime()) + ".xlsx"
 
@@ -105,15 +105,15 @@ def resultMakerNew(save_path, remix_test_packages, monkey_test_time, monkey_even
                         for line in file:
                             if "Total RAM:" in line:
                                 line = line.strip('Total RAM: ')
-                                line = line.split('K')
+                                line = re.split('K|kB', line)
                                 total_ram_before_test = float(int(line[0].replace(',', '')) / 1000)
                             if "Free RAM:" in line:
                                 line = line.strip('Free RAM: ')
-                                line = line.split('K')
+                                line = re.split('K|kB', line)
                                 free_ram_before_test = float(int(line[0].replace(',', '')) / 1000)
                             if "Used RAM:" in line:
                                 line = line.strip('Used RAM: ')
-                                line = line.split('K')
+                                line = re.split('K|kB', line)
                                 used_ram_before_test = float(int(line[0].replace(',', '')) / 1000)
 
                         worksheet.merge_range('E2:F2', 'Memory Info Before Test (After Reboot)', yellow_title_format)
@@ -162,11 +162,11 @@ def resultMakerNew(save_path, remix_test_packages, monkey_test_time, monkey_even
                 for line in file:
                     if "Free RAM:" in line:
                         line = line.strip('Free RAM (MB): ')
-                        line = line.split('K')
+                        line = re.split('K|kB', line)
                         free_ram_before_cleaning_processes = float(int(line[0].replace(',', '')) / 1000)
                     if "Used RAM:" in line:
                         line = line.strip('Used RAM (MB): ')
-                        line = line.split('K')
+                        line = re.split('K|kB', line)
                         used_ram_before_cleaning_processes = float(int(line[0].replace(',', '')) / 1000)
 
                 worksheet.write('B' + str(round_row_num + 2), get_memory_info_time, default_cell_format)
@@ -175,9 +175,8 @@ def resultMakerNew(save_path, remix_test_packages, monkey_test_time, monkey_even
 
                 for a in range(8, 27, 2):
                     b = int(a / 2 - 4)
-                    process_name = file[a].strip().split('K: ')[1]
-                    process_mem_usage = file[a].strip().split('K: ')[0].replace(',', '')
-                    process_mem_usage = float(int(process_mem_usage) / 1000)
+                    process_name = re.split('K: |kB: ', file[a].strip())[1]
+                    process_mem_usage = float(int(re.split('K: |kB: ', file[a].strip())[0].replace(',', '')) / 1000)
                     process_cell_row_num = str(15 + b + i * 17)
 
                     worksheet.write('A' + process_cell_row_num, process_name, process_name_cell_format)
@@ -207,11 +206,11 @@ def resultMakerNew(save_path, remix_test_packages, monkey_test_time, monkey_even
                 for line in file:
                     if "Free RAM:" in line:
                         line = line.strip('Free RAM (MB): ')
-                        line = line.split('K')
+                        line = re.split('K|kB', line)
                         free_ram_after_cleaning_processes = float(int(line[0].replace(',', '')) / 1000)
                     if "Used RAM:" in line:
                         line = line.strip('Used RAM (MB): ')
-                        line = line.split('K')
+                        line = re.split('K|kB', line)
                         used_ram_after_cleaning_processes = float(int(line[0].replace(',', '')) / 1000)
 
                 worksheet.write('D' + str(round_row_num + 2), get_memory_info_time, default_cell_format)
@@ -220,9 +219,8 @@ def resultMakerNew(save_path, remix_test_packages, monkey_test_time, monkey_even
 
                 for a in range(8, 27, 2):
                     b = int(a / 2 - 4)
-                    process_name = file[a].strip().split('K: ')[1]
-                    process_mem_usage = file[a].strip().split('K: ')[0].replace(',', '')
-                    process_mem_usage = float(int(process_mem_usage) / 1000)
+                    process_name = re.split('K: |kB: ', file[a].strip())[1]
+                    process_mem_usage = float(int(re.split('K: |kB: ', file[a].strip())[0].replace(',', '')) / 1000)
                     process_cell_row_num = str(15 + b + i * 17)
 
                     worksheet.write('C' + process_cell_row_num, process_name, process_name_cell_format)
@@ -252,11 +250,11 @@ def resultMakerNew(save_path, remix_test_packages, monkey_test_time, monkey_even
                 for line in file:
                     if "Free RAM:" in line:
                         line = line.strip('Free RAM (MB): ')
-                        line = line.split('K')
+                        line = re.split('K|kB', line)
                         free_ram_after_cleaning_processes = float(int(line[0].replace(',', '')) / 1000)
                     if "Used RAM:" in line:
                         line = line.strip('Used RAM (MB): ')
-                        line = line.split('K')
+                        line = re.split('K|kB', line)
                         used_ram_after_cleaning_processes = float(int(line[0].replace(',', '')) / 1000)
 
                 worksheet.write('F' + str(round_row_num + 2), get_memory_info_time, default_cell_format)
@@ -265,9 +263,8 @@ def resultMakerNew(save_path, remix_test_packages, monkey_test_time, monkey_even
 
                 for a in range(8, 27, 2):
                     b = int(a / 2 - 4)
-                    process_name = file[a].strip().split('K: ')[1]
-                    process_mem_usage = file[a].strip().split('K: ')[0].replace(',', '')
-                    process_mem_usage = float(int(process_mem_usage) / 1000)
+                    process_name = re.split('K: |kB: ', file[a].strip())[1]
+                    process_mem_usage = float(int(re.split('K: |kB: ', file[a].strip())[0].replace(',', '')) / 1000)
                     process_cell_row_num = str(15 + b + i * 17)
 
                     worksheet.write('E' + process_cell_row_num, process_name, process_name_cell_format)

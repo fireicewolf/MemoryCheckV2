@@ -1,14 +1,13 @@
 # coding=utf-8
-import time
-import random
-from datetime import datetime
-
 import os
+import random
+import time
+from datetime import datetime
 
 from .command_line import commandLine
 from .create_dirctory import createPackageListDir
-from .device_info import adbstatus, model, manufacturer, buildVersionSDK, deviceScreenWidth, deviceScreenHeight, screenOn, screenOff
-from .save_files import saveAdbLog, saveMemInfoBeforeTest, saveMemInfoBeforeCleaningProcesses,\
+from .device_info import adbstatus, model, manufacturer, deviceScreenWidth, deviceScreenHeight, screenOn, screenOff
+from .save_files import saveAdbLog, saveMemInfoBeforeTest, saveMemInfoBeforeCleaningProcesses, \
     saveMemInfoAfterAutoClearProcess, saveMemInfoAfterManualClearProcess, saveScreenshots, saveDumpsysAfterWholeTest
 
 
@@ -117,7 +116,7 @@ def randomMonkeyTest(create_dir_time, device_id, test_package_names, event_inter
     takeScreenshot_cmd = "adb -s " + device_id + " shell screencap -p /sdcard/test.png"
 
     print(time.ctime() + "~~ Device " + device_id + ': Rebooting, please wait.')
-    commandLine('adb -s ' + device_id + ' reboot').wait(10)
+    commandLine('adb -s ' + device_id + ' reboot').wait(20)
 
     try:
         commandLine('adb -s ' + device_id + ' wait-for-device').wait(90)
@@ -154,12 +153,12 @@ def randomMonkeyTest(create_dir_time, device_id, test_package_names, event_inter
             killMonkeyTestProcess(device_id)
 
             print(time.ctime() + "~~ Device " + device_id + ': Catching memory info.')
-            commandLine(save_memory_info_cmd + saveMemInfoBeforeCleaningProcesses(create_dir_time, device_id)).wait(10)
+            commandLine(save_memory_info_cmd + saveMemInfoBeforeCleaningProcesses(create_dir_time, device_id)).wait(20)
 
             killBackgroundProcess(device_id)
 
             print(time.ctime() + "~~ Device " + device_id + ': Catching memory info after clear processes.')
-            commandLine(save_memory_info_cmd + saveMemInfoAfterManualClearProcess(create_dir_time, device_id)).wait(10)
+            commandLine(save_memory_info_cmd + saveMemInfoAfterManualClearProcess(create_dir_time, device_id)).wait(20)
 
             if is_screen_off == "true":
                 print(time.ctime() + "~~ Device " + device_id + ':Screen will be off ' + str(screen_off_time) +
@@ -180,16 +179,16 @@ def randomMonkeyTest(create_dir_time, device_id, test_package_names, event_inter
         killBackgroundProcess(device_id)
 
         print(time.ctime() + "~~ Device " + device_id + ': Checking background process')
-        commandLine(tap_app_switch).wait(10)
+        commandLine(tap_app_switch).wait(20)
         time.sleep(2)
-        commandLine(takeScreenshot_cmd).wait(10)
+        commandLine(takeScreenshot_cmd).wait(20)
         commandLine('adb -s ' + device_id + ' pull /sdcard/test.png ' +
-                    saveScreenshots("After_manually_cleaning_processes_", create_dir_time, device_id)).wait(10)
-        commandLine('adb -s ' + device_id + ' shell input keyevent KEYCODE_HOME').wait(10)
+                    saveScreenshots("After_manually_cleaning_processes_", create_dir_time, device_id)).wait(20)
+        commandLine('adb -s ' + device_id + ' shell input keyevent KEYCODE_HOME').wait(20)
         print(time.ctime() + "~~ Device " + device_id + ': Screenshot saved.')
 
         print(time.ctime() + "~~ Device " + device_id + ': Catching memory info after whole test.')
-        commandLine(save_memory_info_cmd + saveMemInfoAfterManualClearProcess(create_dir_time, device_id)).wait(10)
+        commandLine(save_memory_info_cmd + saveMemInfoAfterManualClearProcess(create_dir_time, device_id)).wait(30)
     else:
         print(time.ctime() + "~~ Device " + device_id + ': Connection failed, please check and fix this.')
     print(time.ctime() + "~~ Device " + device_id + ': Test finished.')
@@ -200,7 +199,7 @@ def sequenceMonkeyTest(create_dir_time, device_id, test_package_names, rounds, r
     screen_off_time = float(screen_off_time)
 
     tap_app_switch = 'adb -s ' + device_id + ' shell input keyevent KEYCODE_APP_SWITCH'
-    takeScreenshot_cmd = "adb -s " + device_id + " shell screencap -p /sdcard/test.png"
+    take_screenshot_cmd = "adb -s " + device_id + " shell screencap -p /sdcard/test.png"
 
     print(time.ctime() + "~~ Device " + device_id + ': Rebooting, please wait.')
     commandLine('adb -s ' + device_id + ' reboot').wait()
@@ -222,40 +221,39 @@ def sequenceMonkeyTest(create_dir_time, device_id, test_package_names, rounds, r
         time.sleep(600)
 
         print(time.ctime() + "~~ Device " + device_id + ': Catching memory info before test.')
-        commandLine(save_memory_info_cmd + saveMemInfoBeforeTest(create_dir_time, device_id)).wait(10)
+        commandLine(save_memory_info_cmd + saveMemInfoBeforeTest(create_dir_time, device_id)).wait(20)
 
         print(time.ctime() + "~~ Device " + device_id + ': Checking background process')
         commandLine(tap_app_switch).wait(10)
         time.sleep(2)
-        commandLine(takeScreenshot_cmd).wait(10)
+        commandLine(take_screenshot_cmd).wait(10)
         commandLine('adb -s ' + device_id + ' pull /sdcard/test.png ' +
-                    saveScreenshots("Before_test_", create_dir_time, device_id)).wait(10)
-        commandLine('adb -s ' + device_id + ' shell input keyevent KEYCODE_HOME').wait(10)
+                    saveScreenshots("Before_test_", create_dir_time, device_id)).wait(20)
+        commandLine('adb -s ' + device_id + ' shell input keyevent KEYCODE_HOME').wait(20)
         print(time.ctime() + "~~ Device " + device_id + ': Screenshot saved.')
 
         for roundNum in range(int(rounds)):
             print(time.ctime() + "~~ Device " + device_id + ': Test round ' + str(roundNum+1) + '.')
-            startTime = datetime.now()
+            start_time = datetime.now()
             print(time.ctime() + "~~ Device " + device_id + ': Test will run for ' + str(running_time) + ' minutes.')
             print(time.ctime() + "~~ Device " + device_id + ': Starting monkey test.')
 
             for i in range(len(test_package_names)):
-                # testPackage = test_package_names[i]
-                testPackage = random.choice(test_package_names)
-                print(time.ctime() + "~~ Device " + device_id + ': App: "' + str(testPackage) + '" test start.')
-                monkey_cmd = 'adb -s ' + device_id + ' shell monkey -p ' + str(testPackage) + \
+                test_package = random.choice(test_package_names)
+                print(time.ctime() + "~~ Device " + device_id + ': App: "' + str(test_package) + '" test start.')
+                monkey_cmd = 'adb -s ' + device_id + ' shell monkey -p ' + str(test_package) + \
                              ' --throttle ' + str(event_interval) + ' --ignore-crashes --ignore-security-exceptions ' \
                                                                     '--ignore-timeouts --monitor-native-crashes ' \
                                                                     '-v -v -v ' \
                              + str(event_count) + ' > '
-                if (datetime.now() - startTime).seconds < int(running_time) * 60:
-                    commandLine(monkey_cmd + saveAdbLog(testPackage + '_', create_dir_time, device_id))
+                if (datetime.now() - start_time).seconds < int(running_time) * 60:
+                    commandLine(monkey_cmd + saveAdbLog(test_package + '_', create_dir_time, device_id))
                     time.sleep(600)
                     killMonkeyTestProcess(device_id)
 
-                    print(time.ctime() + "~~ Device " + device_id + ': App: "' + str(testPackage) +
+                    print(time.ctime() + "~~ Device " + device_id + ': App: "' + str(test_package) +
                           '" test end, back to home screen.')
-                    commandLine('adb -s ' + device_id + ' shell input keyevent KEYCODE_HOME').wait(10)
+                    commandLine('adb -s ' + device_id + ' shell input keyevent KEYCODE_HOME').wait(20)
 
                     if is_screen_off == 'true':
                         print(time.ctime() + "~~ Device " + device_id + ': Screen will be off ' + str(screen_off_time) +
@@ -276,11 +274,11 @@ def sequenceMonkeyTest(create_dir_time, device_id, test_package_names, rounds, r
             time.sleep(60)
 
             print(time.ctime() + "~~ Device " + device_id + ': Checking background process')
-            commandLine(tap_app_switch).wait(10)
+            commandLine(tap_app_switch).wait(20)
             time.sleep(2)
-            commandLine(takeScreenshot_cmd).wait(10)
+            commandLine(take_screenshot_cmd).wait(20)
             commandLine('adb -s ' + device_id + ' pull /sdcard/test.png ' +
-                        saveScreenshots("After_monkey_test_processes_", create_dir_time, device_id)).wait(10)
+                        saveScreenshots("After_monkey_test_processes_", create_dir_time, device_id)).wait(20)
             commandLine('adb -s ' + device_id + ' shell input keyevent KEYCODE_HOME').wait(10)
             print(time.ctime() + "~~ Device " + device_id + ': Screenshot saved.')
 
@@ -289,16 +287,16 @@ def sequenceMonkeyTest(create_dir_time, device_id, test_package_names, rounds, r
             screenOff(device_id)
             time.sleep(1800)
             print(time.ctime() + "~~ Device " + device_id + ': Catching memory info after auto clean processes')
-            commandLine(save_memory_info_cmd + saveMemInfoAfterAutoClearProcess(create_dir_time, device_id)).wait(10)
+            commandLine(save_memory_info_cmd + saveMemInfoAfterAutoClearProcess(create_dir_time, device_id)).wait(30)
 
             screenOn(device_id)
             print(time.ctime() + "~~ Device " + device_id + ': Checking background process')
-            commandLine(tap_app_switch).wait(10)
+            commandLine(tap_app_switch).wait(20)
             time.sleep(2)
-            commandLine(takeScreenshot_cmd).wait(10)
+            commandLine(take_screenshot_cmd).wait(20)
             commandLine('adb -s ' + device_id + ' pull /sdcard/test.png ' +
-                        saveScreenshots("After_automatically_cleaning_processes_", create_dir_time, device_id)).wait(10)
-            commandLine('adb -s ' + device_id + ' shell input keyevent KEYCODE_HOME').wait(10)
+                        saveScreenshots("After_automatically_cleaning_processes_", create_dir_time, device_id)).wait(20)
+            commandLine('adb -s ' + device_id + ' shell input keyevent KEYCODE_HOME').wait(20)
             print(time.ctime() + "~~ Device " + device_id + ': Screenshot saved.')
 
             print(time.ctime() + "~~ Device " + device_id + ': Device will be screen on and stay idle for 30 minutes')
@@ -309,20 +307,20 @@ def sequenceMonkeyTest(create_dir_time, device_id, test_package_names, rounds, r
             time.sleep(60)
 
             print(time.ctime() + "~~ Device " + device_id + ': Catching memory info after manual clean processes.')
-            commandLine(save_memory_info_cmd + saveMemInfoAfterManualClearProcess(create_dir_time, device_id)).wait(10)
+            commandLine(save_memory_info_cmd + saveMemInfoAfterManualClearProcess(create_dir_time, device_id)).wait(30)
             time.sleep(60)
 
             print(time.ctime() + "~~ Device " + device_id + ': Checking background process')
-            commandLine(tap_app_switch).wait(10)
+            commandLine(tap_app_switch).wait(20)
             time.sleep(2)
-            commandLine(takeScreenshot_cmd).wait(10)
+            commandLine(take_screenshot_cmd).wait(20)
             commandLine('adb -s ' + device_id + ' pull /sdcard/test.png ' +
-                        saveScreenshots("After_manually_cleaning_processes_", create_dir_time, device_id)).wait(10)
-            commandLine('adb -s ' + device_id + ' shell input keyevent KEYCODE_HOME').wait(10)
+                        saveScreenshots("After_manually_cleaning_processes_", create_dir_time, device_id)).wait(20)
+            commandLine('adb -s ' + device_id + ' shell input keyevent KEYCODE_HOME').wait(20)
             print(time.ctime() + "~~ Device " + device_id + ': Screenshot saved.')
 
             print(time.ctime() + "~~ Device " + device_id + ': Catching dumpsys info.')
-            commandLine(save_dumpsys_cmd + saveDumpsysAfterWholeTest(create_dir_time, device_id)).wait(30)
+            commandLine(save_dumpsys_cmd + saveDumpsysAfterWholeTest(create_dir_time, device_id)).wait(60)
 
     else:
         print(time.ctime() + "~~ Device " + device_id + ': Connection failed, please check and fix this.')
