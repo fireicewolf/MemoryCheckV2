@@ -4,7 +4,7 @@ import os
 import re
 import time
 import xlsxwriter
-from .device_info import manufacturer
+from .device_info import manufacturer  
 from .device_info import model
 from .device_info import buildVersion
 
@@ -30,9 +30,6 @@ def resultMakerNew(save_path, remix_test_packages, monkey_test_time, monkey_even
 
     light_green_format = workbook.add_format({'font_name': 'Arial', 'font_size': 11, 'align': 'center',
                                               'valign': 'vcenter', 'border': 1, 'bg_color': '#92D050', 'bold': True})
-
-    light_grey_format = workbook.add_format({'font_name': 'Arial', 'font_size': 11, 'align': 'center',
-                                             'valign': 'vcenter', 'border': 1, 'bg_color': '#C9C9C9'})
 
     orange_format = workbook.add_format({'font_name': 'Arial', 'font_size': 11, 'align': 'center',
                                          'valign': 'vcenter', 'border': 1, 'bg_color': '#F4B084', 'bold': True})
