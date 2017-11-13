@@ -89,8 +89,8 @@ def killBackgroundProcess(device_id):
     screenHeight = deviceScreenHeight(device_id)
     tap_app_switch = 'adb -s ' + device_id + ' shell input keyevent KEYCODE_APP_SWITCH'
 
-    if model(device_id) == 'W909':
-        kill_all_background_apps_cmd = 'adb -s ' + device_id + ' shell input tap 360 1115'
+    if model(device_id) == 'W909' or 'GIONEE W919':
+        kill_all_background_apps_cmd = 'adb -s ' + device_id + ' shell input tap 360 1120'
 
     elif model(device_id) == 'MHA-AL00':
         kill_all_background_apps_cmd = 'adb -s ' + device_id + ' shell input tap 540 1680'
