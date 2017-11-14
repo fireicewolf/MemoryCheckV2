@@ -33,7 +33,7 @@ for device in device_list:
     device_id = str(device)
 
     if def_test_package == '':
-        if manufacturer(device_id) == 'GIONEE' and buildVersionSDK(device_id) < 25:
+        if manufacturer(device_id) == 'GIONEE' and buildVersionSDK(device_id) < 24:
             packages = getAppPackageName(create_dir_time, device_id)
         else:
             packages = getAppPackageNameNew(manufacturer(device_id), model(device_id), device_id)
