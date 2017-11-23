@@ -23,7 +23,7 @@ blind_packages = str(config.get('config', 'Blind Packages'))
 is_screen_off = str(config.get('config', 'Screen off'))
 screen_off_time = '%.2f' % float(config.get('config', 'Screen off time'))
 
-# create_dir_time = '2017.10.30_12-41-09'
+# create_dir_time = '2017.11.17_11-59-44'
 create_dir_time = time.strftime('%Y.%m.%d_%H-%M-%S', time.localtime())
 print(time.ctime() + "~~ Test result will save in " + createResultDir(create_dir_time) + ".")
 

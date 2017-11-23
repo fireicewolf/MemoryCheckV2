@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="21a0765f-4f58-4ae3-ad01-230b8718c501" name="Default" comment="Codes update">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/MemoryCheckV2.iml" afterPath="$PROJECT_DIR$/.idea/MemoryCheckV2.iml" />
+    <list default="true" id="21a0765f-4f58-4ae3-ad01-230b8718c501" name="Default" comment="Codes update&#10;Fix monkey command timeout&#10;Fix result maker compatibility">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main_test.py" afterPath="$PROJECT_DIR$/Main_test.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monkey_test_config.ini" afterPath="$PROJECT_DIR$/monkey_test_config.ini" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/monkey_test.py" afterPath="$PROJECT_DIR$/scripts/monkey_test.py" />
     </list>
     <ignored path="./Result/" />
@@ -17,11 +18,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/MemoryCheckV2$Main_test.coverage" NAME="Main_test Coverage Results" MODIFIED="1504696919893" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/MemoryCheckV2$device_info.coverage" NAME="device_info Coverage Results" MODIFIED="1498547167967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
-    <SUITE FILE_PATH="coverage/MemoryCheckV2$monkey_test.coverage" NAME="monkey_test Coverage Results" MODIFIED="1499219511493" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
     <SUITE FILE_PATH="coverage/MemoryCheckV2$Result_maker_new.coverage" NAME="Result_maker_new Coverage Results" MODIFIED="1502673414618" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
     <SUITE FILE_PATH="coverage/MemoryCheckV2$Result_maker.coverage" NAME="Result_maker Coverage Results" MODIFIED="1498817835672" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
+    <SUITE FILE_PATH="coverage/MemoryCheckV2$monkey_test.coverage" NAME="monkey_test Coverage Results" MODIFIED="1499219511493" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
+    <SUITE FILE_PATH="coverage/MemoryCheckV2$test.coverage" NAME="test Coverage Results" MODIFIED="1510891032421" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
+    <SUITE FILE_PATH="coverage/MemoryCheckV2$device_info.coverage" NAME="device_info Coverage Results" MODIFIED="1498547167967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
+    <SUITE FILE_PATH="coverage/MemoryCheckV2$Main_test.coverage" NAME="Main_test Coverage Results" MODIFIED="1511140630740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -37,11 +39,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main_test.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main_test.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Main_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-736">
-              <caret line="39" column="37" lean-forward="false" selection-start-line="39" selection-start-column="37" selection-end-line="39" selection-end-column="37" />
+            <state relative-caret-position="562">
+              <caret line="88" column="17" lean-forward="false" selection-start-line="88" selection-start-column="17" selection-end-line="88" selection-end-column="17" />
               <folding>
                 <element signature="e#16#35#0" expanded="true" />
               </folding>
@@ -49,34 +51,56 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Result_maker_new.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/Result_maker_new.py">
+      <file leaf-file-name="Result_maker.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/Result_maker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="109" column="51" lean-forward="false" selection-start-line="109" selection-start-column="51" selection-end-line="109" selection-end-column="51" />
+            <state relative-caret-position="3960">
+              <caret line="222" column="57" lean-forward="false" selection-start-line="222" selection-start-column="57" selection-end-line="222" selection-end-column="57" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="save_files.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/save_files.py">
+      <file leaf-file-name="Result_maker_new.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/Result_maker_new.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="621">
-              <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+            <state relative-caret-position="108">
+              <caret line="6" column="39" lean-forward="false" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="monkey_test.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/monkey_test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1854">
+              <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
               <folding>
-                <element signature="e#15#26#0" expanded="true" />
+                <element signature="e#15#24#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="monkey_test.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/scripts/monkey_test.py">
+      <file leaf-file-name="device_info.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/device_info.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="91" column="49" lean-forward="false" selection-start-line="91" selection-start-column="49" selection-end-line="91" selection-end-column="49" />
+            <state relative-caret-position="1530">
+              <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="54">
+              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="31" selection-end-column="39" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -84,14 +108,21 @@
       <file leaf-file-name="monkey_test_config.ini" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/monkey_test_config.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="2" column="18" lean-forward="false" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+            <state relative-caret-position="36">
+              <caret line="2" column="61" lean-forward="false" selection-start-line="2" selection-start-column="45" selection-end-line="2" selection-end-column="61" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -114,6 +145,16 @@
       <find>model</find>
       <find>savescreen</find>
       <find>Round</find>
+      <find>this</find>
+      <find>stdou</find>
+      <find>subprocess</find>
+      <find>wait</find>
+      <find>wait(</find>
+      <find>stdout</find>
+      <find>decode</find>
+      <find>whole</find>
+      <find>test.png</find>
+      <find>used_ram_after_cleaning_processes</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -122,7 +163,6 @@
         <option value="DukeG &lt;fireicewolf@gmail.com&gt;" />
       </list>
     </option>
-    <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -145,18 +185,18 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/scripts/__init__.py" />
-        <option value="$PROJECT_DIR$/scripts/command_line.py" />
         <option value="$PROJECT_DIR$/monkeytest.ini" />
         <option value="$PROJECT_DIR$/Result/2017.06.29_15-26-31/adb_logs/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0179/monkey_logs_com.android.calendar_2017.06.29_15-34-07.txt" />
         <option value="$PROJECT_DIR$/scripts/Result_maker.py" />
-        <option value="$PROJECT_DIR$/scripts/device_info.py" />
-        <option value="$PROJECT_DIR$/scripts/create_dirctory.py" />
         <option value="$PROJECT_DIR$/scripts/save_files.py" />
-        <option value="$PROJECT_DIR$/monkey_test_config.ini" />
-        <option value="$PROJECT_DIR$/Main_test.py" />
-        <option value="$PROJECT_DIR$/Main Application.py" />
+        <option value="$PROJECT_DIR$/scripts/create_dirctory.py" />
+        <option value="$PROJECT_DIR$/scripts/command_line.py" />
+        <option value="$PROJECT_DIR$/scripts/device_info.py" />
         <option value="$PROJECT_DIR$/scripts/Result_maker_new.py" />
+        <option value="$PROJECT_DIR$/monkey_test_config.ini" />
+        <option value="$PROJECT_DIR$/scripts/test.py" />
         <option value="$PROJECT_DIR$/scripts/monkey_test.py" />
+        <option value="$PROJECT_DIR$/Main_test.py" />
       </list>
     </option>
   </component>
@@ -173,9 +213,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="28" />
-    <option name="width" value="1717" />
-    <option name="height" value="908" />
+    <option name="x" value="210" />
+    <option name="y" value="125" />
+    <option name="width" value="1697" />
+    <option name="height" value="922" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -194,6 +235,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -204,13 +246,23 @@
             <path>
               <item name="MemoryCheckV2" type="b2602c69:ProjectViewProjectNode" />
               <item name="MemoryCheckV2" type="462c0819:PsiDirectoryNode" />
+              <item name="Result" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MemoryCheckV2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MemoryCheckV2" type="462c0819:PsiDirectoryNode" />
+              <item name="Result" type="462c0819:PsiDirectoryNode" />
+              <item name="2017.11.17_11-59-44" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MemoryCheckV2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MemoryCheckV2" type="462c0819:PsiDirectoryNode" />
               <item name="scripts" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -447,24 +499,6 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method />
     </configuration>
-    <configuration name="device_info" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="MemoryCheckV2" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/device_info.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-    </configuration>
     <configuration name="monkey_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -483,20 +517,38 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="MemoryCheckV2" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.Main_test" />
-      <item index="1" class="java.lang.String" itemvalue="Python.device_info" />
-      <item index="2" class="java.lang.String" itemvalue="Python.Result_maker" />
-      <item index="3" class="java.lang.String" itemvalue="Python.monkey_test" />
-      <item index="4" class="java.lang.String" itemvalue="Python.Result_maker_new" />
+      <item index="1" class="java.lang.String" itemvalue="Python.Result_maker" />
+      <item index="2" class="java.lang.String" itemvalue="Python.monkey_test" />
+      <item index="3" class="java.lang.String" itemvalue="Python.Result_maker_new" />
+      <item index="4" class="java.lang.String" itemvalue="Python.test" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.Main_test" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Result_maker_new" />
-        <item index="2" class="java.lang.String" itemvalue="Python.monkey_test" />
-        <item index="3" class="java.lang.String" itemvalue="Python.Result_maker" />
-        <item index="4" class="java.lang.String" itemvalue="Python.device_info" />
+        <item index="1" class="java.lang.String" itemvalue="Python.test" />
+        <item index="2" class="java.lang.String" itemvalue="Python.Result_maker_new" />
+        <item index="3" class="java.lang.String" itemvalue="Python.monkey_test" />
+        <item index="4" class="java.lang.String" itemvalue="Python.Result_maker" />
       </list>
     </recent_temporary>
   </component>
@@ -617,13 +669,41 @@
       <updated>1502848222615</updated>
     </task>
     <task id="LOCAL-00016" summary="Codes update">
-      <created>1504940603789</created>
+      <created>1508980122039</created>
       <option name="number" value="00016" />
       <option name="presentableId" value="LOCAL-00016" />
       <option name="project" value="LOCAL" />
-      <updated>1504940603789</updated>
+      <updated>1508980122039</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Codes update&#10;Fix monkey command timeout&#10;Fix result maker compatibility">
+      <created>1509586243837</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1509586243837</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Codes update&#10;Fix monkey command timeout&#10;Fix result maker compatibility">
+      <created>1510565581264</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1510565581264</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Add package list folder.">
+      <created>1510638308602</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1510638308602</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Codes update&#10;Fix monkey command timeout&#10;Fix result maker compatibility">
+      <created>1510638339565</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1510638339565</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TodoView">
@@ -636,29 +716,29 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="27" width="1920" height="1020" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16577825" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20170757" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21956521" sideWeight="0.5170576" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47619048" sideWeight="0.511206" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21980414" sideWeight="0.48294243" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922733" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47182322" sideWeight="0.49519745" order="5" side_tool="false" content_ui="tabs" x="0" y="726" width="1920" height="314" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26190478" sideWeight="0.49466383" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32922733" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47619048" sideWeight="0.48879403" order="5" side_tool="false" content_ui="tabs" x="0" y="726" width="1920" height="314" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969433" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969433" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3988827" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281075" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32707182" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Concurrent Activities Diagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Concurrent Activities Diagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -697,7 +777,9 @@
     <MESSAGE value="New way for clean background process&#10;Add average ram in result file" />
     <MESSAGE value="Add new way for getting package names" />
     <MESSAGE value="Codes update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Codes update" />
+    <MESSAGE value="Add package list folder." />
+    <MESSAGE value="Codes update&#10;Fix monkey command timeout&#10;Fix result maker compatibility" />
+    <option name="LAST_COMMIT_MESSAGE" value="Codes update&#10;Fix monkey command timeout&#10;Fix result maker compatibility" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -707,13 +789,6 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://D:/Develop_Tools/Python/Lib/site-packages/xlsxwriter/worksheet.py" />
-    <entry file="file://$PROJECT_DIR$/scripts/Result_maker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4922">
-          <caret line="222" column="57" lean-forward="false" selection-start-line="222" selection-start-column="57" selection-end-line="222" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Result/2017.07.04_17-14-30/dumpsys_logs/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0179/meminfo_before_test_2017.07.04_17-25-34.txt" />
     <entry file="file://$PROJECT_DIR$/Result/2017.07.04_17-14-30/dumpsys_logs/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0179/meminfo_before_clear_process_2017.07.05_06-18-58.txt" />
     <entry file="file://$PROJECT_DIR$/Result/2017.07.04_17-14-30/dumpsys_logs/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0179/meminfo_after_clear_process_2017.07.05_06-20-09.txt" />
@@ -740,13 +815,6 @@
     <entry file="file://$PROJECT_DIR$/Result/2017.08.02_17-55-36/screenshots/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0205/screenshot_2017.08.03_00-19-03.png" />
     <entry file="file://$PROJECT_DIR$/Result/2017.08.03_18-43-50/screenshots/GIONEE__M6SPlus__4326b4c7__BJ_G1602A_sign_T0205/screenshot_2017.08.04_01-00-26.png" />
     <entry file="file://$PROJECT_DIR$/Result/2017.08.03_18-43-50/screenshots/GIONEE__M6SPlus__417db436__BJ_G1602A_sign_T0205/screenshot_2017.08.04_01-05-32.png" />
-    <entry file="file://$PROJECT_DIR$/scripts/command_line.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Result/2017.08.12_16-42-39/adb_logs/G6YS7SSOJJKFPBUC/monkey_logs_com.android.browser_2017.08.12_16-53-51.txt" />
     <entry file="file://$PROJECT_DIR$/Result/2017.08.12_17-36-34/dumpsys_logs/G6YS7SSOJJKFPBUC/meminfo_after_clear_process_2017.08.12_23-52-41.txt" />
     <entry file="file://$PROJECT_DIR$/Result/2017.08.12_17-36-34/screenshots/G6YS7SSOJJKFPBUC/screenshot_2017.08.12_23-51-40.png" />
@@ -761,24 +829,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Result/2017.08.16_17-52-44/screenshots/NZAI4S5SK76TOBO7/screenshot_2017.08.17_00-07-48.png" />
     <entry file="file://$PROJECT_DIR$/Result/2017.08.16_17-52-44/screenshots/G6YS7SSOJJKFPBUC/screenshot_2017.08.17_00-07-47.png" />
-    <entry file="file://$PROJECT_DIR$/scripts/create_dirctory.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Result/2017.08.17_18-25-23/screenshots/3HX0216B02022466/screenshot_2017.08.18_01-44-46.png" />
     <entry file="file://$PROJECT_DIR$/Result/2017.08.18_09-10-33/screenshots/3HX0216B02022466/screenshot_2017.08.18_16-29-57.png" />
     <entry file="file://$PROJECT_DIR$/Result/2017.08.21_18-04-14/screenshots/de87c442/screenshot_2017.08.22_01-24-34.png" />
     <entry file="file://$PROJECT_DIR$/Result/2017.08.21_18-04-14/screenshots/NZAI4S5SK76TOBO7/screenshot_2017.08.22_01-24-33.png" />
-    <entry file="file://$PROJECT_DIR$/scripts/device_info.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-429">
-          <caret line="35" column="16" lean-forward="false" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///media/john/软件/workspace/MemoryCheckV2/scripts/Result_maker_new.py" />
     <entry file="file://$PROJECT_DIR$/.pydevproject">
       <provider selected="true" editor-type-id="text-editor">
@@ -787,48 +841,87 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/monkey_test_config.ini">
+    <entry file="file://$PROJECT_DIR$/scripts/create_dirctory.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="18" lean-forward="false" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+        <state relative-caret-position="292">
+          <caret line="21" column="29" lean-forward="false" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main Application.py" />
-    <entry file="file://$PROJECT_DIR$/Main_test.py">
+    <entry file="file://$PROJECT_DIR$/scripts/command_line.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-736">
-          <caret line="39" column="37" lean-forward="false" selection-start-line="39" selection-start-column="37" selection-end-line="39" selection-end-column="37" />
-          <folding>
-            <element signature="e#16#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/Result_maker_new.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="109" column="51" lean-forward="false" selection-start-line="109" selection-start-column="51" selection-end-line="109" selection-end-column="51" />
-          <folding />
+        <state relative-caret-position="144">
+          <caret line="8" column="35" lean-forward="false" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/save_files.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
+        <state relative-caret-position="339">
           <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/Result_maker_new.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="39" lean-forward="false" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monkey_test_config.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="61" lean-forward="false" selection-start-line="2" selection-start-column="45" selection-end-line="2" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="31" selection-end-column="39" />
           <folding>
-            <element signature="e#15#26#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/monkey_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="91" column="49" lean-forward="false" selection-start-line="91" selection-start-column="49" selection-end-line="91" selection-end-column="49" />
+        <state relative-caret-position="1854">
+          <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+          <folding>
+            <element signature="e#15#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/device_info.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1530">
+          <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/Result_maker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3960">
+          <caret line="222" column="57" lean-forward="false" selection-start-line="222" selection-start-column="57" selection-end-line="222" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="562">
+          <caret line="88" column="17" lean-forward="false" selection-start-line="88" selection-start-column="17" selection-end-line="88" selection-end-column="17" />
+          <folding>
+            <element signature="e#16#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

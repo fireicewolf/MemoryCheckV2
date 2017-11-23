@@ -87,15 +87,18 @@ def killMonkeyTestProcess(device_id):
 def killBackgroundProcess(device_id):
     screenWidth = deviceScreenWidth(device_id)
     screenHeight = deviceScreenHeight(device_id)
+    test_model = model(device_id)
+    test_manufacturer = manufacturer(device_id)
+
     tap_app_switch = 'adb -s ' + device_id + ' shell input keyevent KEYCODE_APP_SWITCH'
 
-    if model(device_id) == 'W909' or 'GIONEE W919':
+    if test_model == 'W909' or test_model == 'GIONEE W919':
         kill_all_background_apps_cmd = 'adb -s ' + device_id + ' shell input tap 360 1120'
 
-    elif model(device_id) == 'MHA-AL00':
+    elif test_model == 'MHA-AL00':
         kill_all_background_apps_cmd = 'adb -s ' + device_id + ' shell input tap 540 1680'
 
-    elif screenHeight/screenWidth == 2 and manufacturer == 'GIONEE':
+    elif screenHeight/screenWidth == 2 and test_manufacturer == 'GIONEE':
         kill_all_background_apps_cmd = 'adb -s ' + device_id + ' shell input tap ' \
                                        + str(int(360 / 720 * screenWidth)) + ' ' + str(int(1170 / 1440 * screenHeight))
     else:
