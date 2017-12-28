@@ -4,7 +4,7 @@ import os
 import re
 import time
 import xlsxwriter
-from .device_info import manufacturer  
+from .device_info import manufacturer
 from .device_info import model
 from .device_info import buildVersion
 
